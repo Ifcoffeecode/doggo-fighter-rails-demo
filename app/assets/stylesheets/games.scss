@@ -1,0 +1,798 @@
+#game-page {
+  height: 100vh;
+  background-image: url("cardbackgroundalley2.jpg");
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.name-container {
+  display: flex;
+}
+
+#p2-name-container {
+  position: absolute;
+  left: 15px;
+  top:10px;
+}
+
+.bench {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  width:600px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.bench-container {
+  display: flex;
+  justify-content: center;
+}
+
+#p2-bench-container {
+  margin-left:18px;
+}
+
+.p2-bench {
+display: flex;
+justify-content: space-around;
+}
+
+#p1-menu{
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+}
+
+#p1-buttons-container {
+  position: relative;
+  top:19px;
+  left:98px;
+  display: none;
+}
+
+
+#p1-name {
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  height:58px;
+  width:205px;
+  background-color: #4A8FA6 ;
+  position: relative;
+  top:8px;
+}
+
+#p2-name {
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  height:58px;
+  width:205px;
+  background-color: #4A8FA6 ;
+  position: relative;
+  top:8px;
+}
+
+.card-front {
+  backface-visibility: hidden;
+  position: relative;
+  margin-left:5px;
+  margin-right:5px;
+  width:85px;
+  height:110px;
+  border-radius: 10px;
+}
+
+.card-front-background {
+  box-shadow: 5px 5px 5px #1d1d28;
+  position: absolute;
+  top:0;
+  left:0;
+  right: 0;
+  bottom: 0;
+  border:thin black solid;
+  width:85px;
+  height:110px;
+  border-radius: 10px;
+  background-image: url("card-front.png");
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*margin: auto;*/
+  backface-visibility: hidden;
+}
+
+.card-back-for-flip {
+  position: absolute;
+  border-radius: 10px;
+  width:85px;
+  height:110px;
+  top: 0;
+  left: 0;
+  transform: rotateY( 180deg );
+  backface-visibility: hidden;
+  right: 0;
+  bottom: 0;
+  background-image: url("badasscardback2.jpeg");
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size:contain;
+  box-shadow: 5px 5px 5px #1d1d28;
+}
+
+.atk-hp-box {
+  position: absolute;
+  top:50%;
+  left:70%;
+  color:black;
+  font-weight: bold;
+  backface-visibility: hidden;
+}
+
+.card-marker {
+  border: thin white dashed;
+  border-radius: 10px;
+
+}
+
+.active-card-marker {
+  margin-right:620px;
+  width:95px;
+  height:120px;
+}
+
+.p1-bench-marker {
+  width:95px;
+  height:120px;
+}
+
+.p2-bench-marker {
+  width:95px;
+  height:120px;
+}
+
+#player1-field {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 47.5%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#p1-active-card {
+  position: relative;
+  bottom:5px;
+  margin-left:46%;
+}
+
+#player2-field {
+  height: 48%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#p2-active-card {
+  position: relative;
+  margin-left:46%;
+  top: 10px;
+}
+
+.hand-container {
+  padding-right: 35px;
+  width: 675px;
+}
+
+#p1-hand {
+  margin-right: auto;
+  margin-left: auto;
+  height: 120px;
+  display: flex;
+}
+
+#p2-hand {
+  margin-right: auto;
+  margin-left: auto;
+  height: 120px;
+  display: flex;
+
+}
+
+#p1-deck {
+  position: absolute;
+  bottom:60%;
+  right:150px;
+}
+#p2-deck {
+  position: absolute;
+  top:30%;
+  right:150px;
+}
+
+ul.deck {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 1.5em 0;
+    position: relative;
+    /*bottom:350px;
+    left:450px;*/
+    clear: both;
+}
+
+ul.deck li {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    float: left;
+}
+
+ul.deck {
+    height: 8em;
+}
+
+
+
+li {
+  list-style: none;
+}
+
+hr {
+  border: thin grey dashed;
+}
+
+.p1-hover {
+  transition: transform .3s easeOut;
+}
+
+.p1-hover:hover {
+  /*transition-delay:1s;*/
+  /*transition: transform .3s ease;*/
+  z-index: 1;
+  margin-top: -20px;
+  /*transform: scale(3);*/
+}
+
+
+.card-img-holder {
+  backface-visibility: hidden;
+  position: absolute;
+  margin: auto;
+  padding-top:8px;
+  padding-left:7px;
+  width:70px;
+  height:50px;
+  /*border:thin black solid;*/
+}
+
+.card-img {
+ backface-visibility: hidden;
+ position: absolute;
+ width: 100%;
+ height:100%;
+}
+
+.card-special {
+  backface-visibility: hidden;
+  position: absolute;
+  left:10%;
+  bottom: -10%;
+  font-size: xx-small;
+  margin: auto;
+  width:80%;
+  height:45%;
+}
+
+#turn-button {
+  position: relative;
+  float:right;
+  top:10px;
+  right:5px;
+  font-size: 20px;
+}
+
+.card-back {
+  position: relative;
+  margin: 5px;
+  width:85px;
+  height:110px;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  background-image: url("badasscardback2.jpeg");
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size:contain;
+  box-shadow: 5px 5px 5px #1d1d28;
+}
+
+
+
+#game-menu{
+  background-color: #d89c4e;
+  width: 35%;
+  height: 50%;
+  border-radius: 5px;
+  border: thin black solid;
+  box-shadow: 5px 5px 5px #1d1d28;
+  margin-left:35%;
+  margin-top:15%;
+
+}
+
+#game-menu-header {
+  width: 35%;
+  margin-left:35%;
+  text-align: center;
+}
+
+
+.menu-btn {
+  background-color: #fff989;
+  border-radius: 5px;
+  width: 120px;
+  height: 40px;
+}
+
+#coin-container {
+  position: absolute;
+  left:580px;
+  bottom: 255px;
+}
+
+#coin-img {
+  position:relative;
+  width:300px;
+  height:300px;
+  z-index: 4;
+  transform-style:preserve-3d;
+  transition: transform .3s ease;
+  animation-name: flipCoinHeads;
+  animation-duration: .75s;
+  animation-iteration-count: 3;
+  animation-fill-mode: forwards;
+  animation-timing-function:ease-in-out;
+}
+
+#coin-img-back{
+  position: absolute;
+  width:300px;
+  height:300px;
+  top: 0;
+  left: 0;
+  transform: rotateY( 180deg );
+  backface-visibility: hidden;
+  right: 0;
+  bottom: 0;
+  background-image: url("backcoin.png");
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size:contain;
+}
+
+#coin-img-front {
+  position: absolute;
+  top:0;
+  left:0;
+  right: 0;
+  bottom: 0;
+  width:300px;
+  height:300px;
+  background-image: url("frontcoin.png");
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  backface-visibility: hidden;
+}
+
+#your-turn {
+  z-index: 2;
+  color: #e0dbaf;
+  font-size: 60px;
+  display: none;
+  position: absolute;
+  top:45%;
+  left: 45%;
+  transition: transform .3s ease;
+  animation-name: zoomIn;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
+  animation-timing-function:ease-in-out;
+}
+
+#opponent-turn {
+  z-index: 2;
+  color: #e0dbaf;
+  font-size: 60px;
+  display: none;
+  position: absolute;
+  top:45%;
+  left: 35%;
+  transition: transform .3s ease;
+  animation-name: zoomIn;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
+  animation-timing-function:ease-in-out;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.first-turn-scale {
+  transition: transform .3s ease;
+  z-index: 1;
+  margin-top: -35%;
+  margin-right: auto;
+  margin-left: auto;
+  transform: scale(2);
+}
+
+#eyes {
+  position: absolute;
+  top:57%;
+  left:19.5%;
+  width:100px;
+  height:100px;
+  animation-name: blink;
+  animation-duration:7s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+}
+
+#p1-explosion{
+  z-index: 2;
+  display: none;
+  position: absolute;
+  top:37%;
+  left:48.5%;
+  width:100px;
+  height:100px;
+  transition: transform .3s ease;
+  animation-name: boom;
+  animation-duration:1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
+  animation-timing-function:ease-in-out;
+}
+
+#p2-explosion{
+  z-index: 2;
+  display: none;
+  position: absolute;
+  top:48%;
+  left:48.5%;
+  width:100px;
+  height:100px;
+  transition: transform .3s ease;
+  animation-name: boom;
+  animation-duration:1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
+  animation-timing-function:ease-in-out;
+}
+
+@keyframes boom {
+  from {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  0%{
+      opacity: 1;
+  }
+  25%{
+      opacity: 1;
+  }
+  26%{
+      display: none;
+      opacity: 0;
+  }
+  30%{
+      opacity: 1;
+  }
+  100%{
+      opacity: 1;
+  }
+}
+
+/*======================= P1-ATTACK =========================== */
+/*============================================================= */
+
+.p1-attack {
+  transform-style:preserve-3d;
+  transition: transform .5s ease;
+  animation-name: p1Attack;
+  animation-duration: .2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
+  animation-timing-function:ease;
+}
+
+@keyframes p1Attack {
+  0% {
+            transform: translateY(0);
+  }
+  100% {
+            transform: translateY(-70px);
+  }
+}
+
+
+
+/*======================= Flip card =========================== */
+/*============================================================= */
+
+
+.flipCard {
+  transform-style: preserve-3d;
+  transition: transform .3s ease;
+  animation-name: rotate3d;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function:ease;
+}
+
+
+
+/*.flipped {
+   transform: rotate3d(0, 1, 0, 180deg);
+}*/
+
+@keyframes rotate3d {
+  0% {
+     transform:rotate3d(0, 1, 0, 180deg);
+  }
+  25% {
+      transform: rotate3d(0, 1, 0, 180deg);
+  }
+  50% {
+     transform: rotate3d(0, 1, 0, 180deg);
+  }
+  75% {
+     transform: rotate3d(0, 1, 0, 0deg);
+  }
+  100% {
+     transform: rotate3d(0, 1, 0, 0deg);
+  }
+}
+
+@keyframes flipCoinHeads {
+  0% {
+     transform:rotate3d(0, 1, 0, 0deg);
+  }
+  25% {
+      transform: rotate3d(0, 1, 0, 180deg);
+  }
+  50% {
+     transform: rotate3d(0, 1, 0, 360deg);
+  }
+  75% {
+     transform: rotate3d(0, 1, 0, 180deg);
+  }
+  100% {
+     transform: rotate3d(0, 1, 0, 0deg);
+  }
+}
+
+/*@keyframes rotate3d-tails {
+  0% {
+     transform:rotate3d(0, 1, 0, 0deg);
+  }
+  15% {
+      transform: rotate3d(0, 1, 0, 180deg);
+  }
+  35% {
+     transform: rotate3d(0, 1, 0, 180deg);
+  }
+  50% {
+     transform: rotate3d(0, 1, 0, 360deg);
+  }
+  65% {
+     transform: rotate3d(0, 1, 0, 360deg);
+  }
+  80% {
+     transform: rotate3d(0, 1, 0, 180deg);
+  }
+  100% {
+     transform: rotate3d(0, 1, 0, 180deg);
+  }
+}*/
+
+#p2-avatar {
+  background-image: url('avatar5.jpeg');
+  background-color: black;
+  background-size: auto 92.3760px;
+  background-position: center;
+}
+
+#p1-avatar {
+  background-image: url('avatar2.jpeg');
+  background-color: black;
+  background-size: auto 92.3760px;
+  background-position: center;
+}
+
+.hexagon {
+  position: relative;
+  width: 100px;
+  height: 57.74px;
+  margin: 28.87px 0;
+  background-image: url('avatar2.jpeg');
+  background-size: auto 92.3760px;
+  background-position: center;
+  border-left: solid 10px #514d4d;
+  border-right: solid 10px #514d4d;
+}
+
+.hexTop,
+.hexBottom {
+  position: absolute;
+  z-index: 1;
+  width: 70.71px;
+  height: 70.71px;
+  overflow: hidden;
+  -webkit-transform: scaleY(0.5774) rotate(-45deg);
+  -ms-transform: scaleY(0.5774) rotate(-45deg);
+  transform: scaleY(0.5774) rotate(-45deg);
+  background: inherit;
+  left: 4.64px;
+}
+
+/*counter transform the bg image on the caps*/
+.hexTop:after,
+.hexBottom:after {
+  content: "";
+  position: absolute;
+  width: 80.0000px;
+  height: 46.188021535170066px;
+  -webkit-transform:  rotate(45deg) scaleY(1.7321) translateY(-23.0940px);
+  -ms-transform:      rotate(45deg) scaleY(1.7321) translateY(-23.0940px);
+  transform:          rotate(45deg) scaleY(1.7321) translateY(-23.0940px);
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  background: inherit;
+}
+
+.hexTop {
+  top: -35.3553px;
+  border-top: solid 14.1421px #514d4d;
+  border-right: solid 14.1421px #514d4d;
+}
+
+.hexTop:after {
+  background-position: center top;
+}
+
+.hexBottom {
+  bottom: -35.3553px;
+  border-bottom: solid 14.1421px orange;
+  border-left: solid 14.1421px orange;
+}
+
+.hexBottom:after {
+  background-position: center bottom;
+}
+
+.hexagon:after {
+  content: "";
+  position: absolute;
+  top: 5.7735px;
+  left: 0;
+  width: 80.0000px;
+  height: 46.1880px;
+  z-index: 2;
+  background: inherit;
+}
+
+.death {
+  transition: transform .3s ease;
+  animation-name: cardDeath;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function:ease-in-out;
+}
+
+@keyframes cardDeath {
+  0% {
+    transform: rotate(45deg);
+  }
+  25% {
+    opacity: 0.85;
+    transform: rotate(45deg);
+  }
+  50% {
+    opacity: 0.65;
+    transform: rotate(45deg);
+  }
+  75% {
+    opacity: 0.35;
+    transform: rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg);
+  }
+}
+
+
+/*======================= SPEECH BUBBLE ================= */
+/*========================================================*/
+#speech-bubble-container {
+  display: none;
+  z-index: 3;
+  position: absolute;
+  bottom:240px;
+  left:365px;
+}
+
+.bubble {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 260px;
+  height: 90px;
+  padding: 20px;
+  background: #FFFFFF;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.bubble:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 15px 20px 15px 0;
+  border-color: transparent #FFFFFF;
+  display: block;
+  width: 0;
+  z-index: 3;
+  left: -20px;
+  top:40px;
+}
+
+
+/*======================= DECK =========================== */
+/*========================================================*/
+ul.deck li:nth-child(1)  { left: 0;    bottom: 0; }
+ul.deck li:nth-child(2)  { left: 2px;  bottom: 1px; }
+ul.deck li:nth-child(3)  { left: 4px;  bottom: 2px; }
+ul.deck li:nth-child(4)  { left: 6px;  bottom: 3px; }
+ul.deck li:nth-child(5)  { left: 8px;  bottom: 4px; }
+ul.deck li:nth-child(6)  { left: 10px; bottom: 5px; }
+ul.deck li:nth-child(7)  { left: 12px; bottom: 6px; }
+ul.deck li:nth-child(8)  { left: 14px; bottom: 7px; }
+ul.deck li:nth-child(9)  { left: 16px; bottom: 8px; }
+ul.deck li:nth-child(10) { left: 18px; bottom: 9px; }
+ul.deck li:nth-child(11) { left: 18px; bottom: 9px; }

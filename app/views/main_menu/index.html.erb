@@ -1,0 +1,17 @@
+<body class="sign-in-page" id="if-signed-in">
+  <div class="login-btn-container">
+    <% if user_signed_in? %>
+    <!-- Hello <%= current_user.full_name %>, -->
+    <%= link_to "Start New Game", games_path , class: "btn btn-warning login-btn" %>
+    <br>
+    <%= link_to "How To Play", new_user_path , class: "btn btn-warning login-btn" %>
+    <br>
+    <%= link_to "Card List", new_user_path , class: "btn btn-warning login-btn" %>
+    <br>
+    <%= link_to "Leader Board", new_user_path , class: "btn btn-warning login-btn" %>
+    <br>
+    <%= link_to "Logout", sessions_path, class: "btn btn-warning login-btn", method: :delete,
+    data: {confirm: "Are you sure you want to log out?"}%>
+  <% end %>
+  </div>
+</body>

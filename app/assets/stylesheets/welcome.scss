@@ -1,0 +1,36 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sign-in-page {
+  height: 730px;
+  background-image: url("loginpagebackground1.jpeg");
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top:2%;
+}
+
+
+
+.login-btn {
+  margin: 10px;
+  width: 200px;
+}
+
+
+#sign-in {
+  position: relative;
+  top:13%;
+}
+
+#if-signed-in {
+  color:#ff8300;
+}

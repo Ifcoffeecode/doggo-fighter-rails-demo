@@ -1,0 +1,19 @@
+<body class="sign-in-page">
+  <div id= "login-background" id="sign-in">
+    <h1>Sign In</h1>
+    <br>
+    <%= form_tag sessions_path  do %>
+      <div class="form-group">
+        <%= label_tag :email  %>
+        <%= email_field_tag :email,nil, class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :password %>
+        <%= password_field_tag :password,nil, class:"form-control" %>
+      </div>
+      <div>
+        <%= submit_tag "Log In", class:"btn btn-warning" %>
+      </div>
+      <% end %>
+  </div>
+</body>

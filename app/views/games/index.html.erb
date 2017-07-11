@@ -1,0 +1,112 @@
+<div id="game-page">
+  <div id="player2-field">
+    <div class="name-container" id="p2-name-container">
+      <div class="hexagon" id="p2avatar">
+        <div class="hexTop"></div>
+        <div class="hexBottom"></div>
+      </div>
+      <h1 id="p2-name">Player 2</h1>
+    </div>
+      <div id="p2-deck">
+        <ul class="deck" id="p2-add-new-card">
+          <li><div class="card-back"></div></li>
+          <li><div class="card-back"></div></li>
+          <li><div class="card-back"></div></li>
+          <li><div class="card-back"></div></li>
+          <li><div class="card-back"></div></li>
+          <li><div class="card-back"></div></li>
+          <li><div class="card-back"></div></li>
+          <li><div class="card-back"></div></li>
+          <li><div class="card-back"></div></li>
+          <li><div class="card-back"></div></li>
+        </ul>
+      </div>
+      <div class='hand-container'>
+        <ul id="p2-hand">
+        </ul>
+      </div>
+      <div class="bench-container" id="p2-bench-container">
+        <ul class="bench">
+          <li class="p2-bench-marker card-marker" id="p2-bench-1"></li>
+          <li class="p2-bench-marker card-marker" id="p2-bench-2"></li>
+          <li class="p2-bench-marker card-marker" id="p2-bench-3"></li>
+          <li class="p2-bench-marker card-marker" id="p2-bench-4"></li>
+        </ul>
+      </div>
+      <div class="active-card-marker card-marker" id ="p2-active-card">
+    </div>
+</div>
+
+  <div id="opponent-turn"><p>Opponent's Turn</p></div>
+
+                               <!--PLAYER 2 ☝️ -->
+                              <!-- PLAYER 1 👇  -->
+
+  <div id="your-turn"><p>Your Turn</p></div>
+
+      <div id="player1-field">
+
+          <div class="active-card-marker card-marker droppable" id ="p1-active-card"
+          ondrop="drop(event)" ondragover="ignoreEvent(event)" ondragleave="dragleave(event)">
+        </div>
+        <div class="bench-container">
+          <ul class="bench">
+            <li class="p1-bench-marker card-marker droppable" id="p1-bench-1"
+            ondrop="drop(event)" ondragover="ignoreEvent(event)" ondragleave="dragleave(event)"></li>
+            <li class="p1-bench-marker card-marker droppable" id="p1-bench-2"
+            ondrop="drop(event)" ondragover="ignoreEvent(event)" ondragleave="dragleave(event)"></li>
+            <li class="p1-bench-marker card-marker droppable" id="p1-bench-3"
+            ondrop="drop(event)" ondragover="ignoreEvent(event)" ondragleave="dragleave(event)"></li>
+            <li class="p1-bench-marker card-marker droppable" id="p1-bench-4"
+            ondrop="drop(event)" ondragover="ignoreEvent(event)" ondragleave="dragleave(event)"></li>
+          </ul>
+        </div>
+        <div class='hand-container'>
+          <ul id="p1-hand">
+          </ul>
+        </div>
+
+        <div id="p1-menu">
+          <div id="p1-buttons-container">
+              <button type="button" onclick="attack()" class="btn btn-warning" id="p1-attack-button">Attack</button>
+              <button type="button" onclick="specialAttack()" class="btn btn-warning" id="p1-special-button">Special</button>
+              <button type="button" onclick="endTurn()" class="btn btn-warning"  id="p1-end-turn-button">End Turn</button>
+            </div>
+            <div class="name-container">
+              <div class="hexagon" id="p1avatar">
+                <div class="hexTop"></div>
+                <div class="hexBottom"></div>
+              </div>
+              <h1 id="p1-name"><%= current_user.user_name %></h1>
+            </div>
+        </div>
+        <div class=""id="p1-deck">
+          <ul class="deck" id="p1-add-new-card">
+            <li><div class="card-back"></div></li>
+            <li><div class="card-back"></div></li>
+            <li><div class="card-back"></div></li>
+            <li><div class="card-back"></div></li>
+            <li><div class="card-back"></div></li>
+            <li><div class="card-back"></div></li>
+            <li><div class="card-back"></div></li>
+            <li><div class="card-back"></div></li>
+            <li><div class="card-back"></div></li>
+            <li><div class="card-back"></div></li>
+          </ul>
+        </div>
+
+    </div>
+
+      <div id="speech-bubble-container">
+        <p class="bubble" id="speech-bubble"></p>
+      </div>
+      <%= image_tag('eyes.png', id: "eyes") %>
+      <%= image_tag("explosion.png", id: "p1-explosion") %>
+      <%= image_tag("explosion.png", id: "p2-explosion") %>
+       <!-- <div id="coin-container">
+         <div id="coin-img">
+           <div id="coin-img-front"></div>
+           <div id="coin-img-back"></div>
+       </div>
+     </div> -->
+  </div>
