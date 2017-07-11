@@ -1,5 +1,5 @@
 #game-page {
-  height: 100vh;
+  height: 730px;
   background-image: url("cardbackgroundalley2.jpg");
   background-position:center;
   background-repeat: no-repeat;
@@ -17,9 +17,8 @@
 }
 
 .bench {
-  margin-top: 3px;
-  margin-bottom: 3px;
-  width:600px;
+  margin-bottom: 0;
+  width:550px;
   display: flex;
   justify-content: space-around;
 }
@@ -30,7 +29,7 @@
 }
 
 #p2-bench-container {
-  margin-left:18px;
+  margin-left:5px;
 }
 
 .p2-bench {
@@ -58,10 +57,10 @@ justify-content: space-around;
   justify-content: center;
   align-items: center;
   height:58px;
-  width:205px;
+  width:225px;
   background-color: #4A8FA6 ;
   position: relative;
-  top:8px;
+  top:30px;
 }
 
 #p2-name {
@@ -70,10 +69,10 @@ justify-content: space-around;
   justify-content: center;
   align-items: center;
   height:58px;
-  width:205px;
+  width:225px;
   background-color: #4A8FA6 ;
   position: relative;
-  top:8px;
+  top:30px;
 }
 
 .card-front {
@@ -81,8 +80,8 @@ justify-content: space-around;
   position: relative;
   margin-left:5px;
   margin-right:5px;
-  width:85px;
-  height:110px;
+  width:80px;
+  height:105px;
   border-radius: 10px;
 }
 
@@ -94,8 +93,8 @@ justify-content: space-around;
   right: 0;
   bottom: 0;
   border:thin black solid;
-  width:85px;
-  height:110px;
+  width:80px;
+  height:105px;
   border-radius: 10px;
   background-image: url("card-front.png");
   background-position:center;
@@ -108,8 +107,8 @@ justify-content: space-around;
 .card-back-for-flip {
   position: absolute;
   border-radius: 10px;
-  width:85px;
-  height:110px;
+  width:80px;
+  height:105px;
   top: 0;
   left: 0;
   transform: rotateY( 180deg );
@@ -139,26 +138,26 @@ justify-content: space-around;
 }
 
 .active-card-marker {
-  margin-right:620px;
-  width:95px;
-  height:120px;
+  margin-right:570px;
+  width:90px;
+  height:110px;
 }
 
 .p1-bench-marker {
-  width:95px;
-  height:120px;
+  width:90px;
+  height:110px;
 }
 
 .p2-bench-marker {
-  width:95px;
-  height:120px;
+  width:90px;
+  height:110px;
 }
 
 #player1-field {
   position: absolute;
   bottom: 0;
   width: 100vw;
-  height: 47.5%;
+  height: 49%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -166,8 +165,8 @@ justify-content: space-around;
 
 #p1-active-card {
   position: relative;
-  bottom:5px;
   margin-left:46%;
+  margin-bottom:8px;
 }
 
 #player2-field {
@@ -180,7 +179,7 @@ justify-content: space-around;
 #p2-active-card {
   position: relative;
   margin-left:46%;
-  top: 10px;
+  margin-top:5px;
 }
 
 .hand-container {
@@ -189,16 +188,18 @@ justify-content: space-around;
 }
 
 #p1-hand {
+  position: relative;
+  bottom: -10px;
   margin-right: auto;
   margin-left: auto;
-  height: 120px;
+  height: 110px;
   display: flex;
 }
 
 #p2-hand {
   margin-right: auto;
   margin-left: auto;
-  height: 120px;
+  height: 110px;
   display: flex;
 
 }
@@ -299,8 +300,8 @@ hr {
 .card-back {
   position: relative;
   margin: 5px;
-  width:85px;
-  height:110px;
+  width:80px;
+  height:105px;
   border-radius: 10px;
   backface-visibility: hidden;
   background-image: url("badasscardback2.jpeg");
@@ -446,8 +447,8 @@ hr {
 
 #eyes {
   position: absolute;
-  top:57%;
-  left:19.5%;
+  top:56.8%;
+  left:19.3%;
   width:100px;
   height:100px;
   animation-name: blink;
@@ -626,20 +627,6 @@ hr {
   }
 }*/
 
-#p2-avatar {
-  background-image: url('avatar5.jpeg');
-  background-color: black;
-  background-size: auto 92.3760px;
-  background-position: center;
-}
-
-#p1-avatar {
-  background-image: url('avatar2.jpeg');
-  background-color: black;
-  background-size: auto 92.3760px;
-  background-position: center;
-}
-
 .hexagon {
   position: relative;
   width: 100px;
@@ -726,16 +713,28 @@ hr {
   0% {
     transform: rotate(45deg);
   }
-  25% {
-    opacity: 0.85;
+  15% {
+    opacity: 0.90;
     transform: rotate(45deg);
   }
-  50% {
-    opacity: 0.65;
+  30% {
+    opacity: 0.75;
+    transform: rotate(45deg);
+  }
+  45% {
+    opacity: 0.60;
+    transform: rotate(45deg);
+  }
+  60% {
+    opacity: 0.45;
     transform: rotate(45deg);
   }
   75% {
-    opacity: 0.35;
+    opacity: 0.30;
+    transform: rotate(45deg);
+  }
+  90% {
+    opacity: 0.15;
     transform: rotate(45deg);
   }
   100% {
