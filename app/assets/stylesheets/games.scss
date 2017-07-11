@@ -1,6 +1,6 @@
 #game-page {
   height: 730px;
-  background-image: url("cardbackgroundalley2.jpg");
+  background-image: url("cardbackgroundalley3.jpg");
   background-position:center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -56,11 +56,11 @@ justify-content: space-around;
   color: white;
   justify-content: center;
   align-items: center;
-  height:58px;
-  width:225px;
+  height:51px;
+  width:205px;
   background-color: #4A8FA6 ;
   position: relative;
-  top:30px;
+  top:27px;
 }
 
 #p2-name {
@@ -68,11 +68,11 @@ justify-content: space-around;
   color: white;
   justify-content: center;
   align-items: center;
-  height:58px;
-  width:225px;
+  height:51px;
+  width:205px;
   background-color: #4A8FA6 ;
   position: relative;
-  top:30px;
+  top:27px;
 }
 
 .card-front {
@@ -92,11 +92,10 @@ justify-content: space-around;
   left:0;
   right: 0;
   bottom: 0;
-  border:thin black solid;
   width:80px;
   height:105px;
   border-radius: 10px;
-  background-image: url("card-front.png");
+  background-image: url("cardfrontnew2.png");
   background-position:center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -123,11 +122,14 @@ justify-content: space-around;
 }
 
 .atk-hp-box {
+  width:15px;
   position: absolute;
-  top:50%;
-  left:70%;
+  top:78%;
+  left:75%;
   color:black;
+  font-size: 7px;
   font-weight: bold;
+  color:white;
   backface-visibility: hidden;
 }
 
@@ -264,14 +266,15 @@ hr {
   backface-visibility: hidden;
   position: absolute;
   margin: auto;
-  padding-top:8px;
-  padding-left:7px;
-  width:70px;
-  height:50px;
+  padding-top:3.5px;
+  padding-left:2px;
+  width:76px;
+  height:55px;
   /*border:thin black solid;*/
 }
 
 .card-img {
+ border-radius: 5px 5px 0 0;
  backface-visibility: hidden;
  position: absolute;
  width: 100%;
@@ -282,22 +285,52 @@ hr {
   backface-visibility: hidden;
   position: absolute;
   left:10%;
-  bottom: -10%;
+  bottom: 5px;
   font-size: xx-small;
   margin: auto;
   width:80%;
-  height:45%;
+  height:30px;
 }
 
-#turn-button {
-  position: relative;
-  float:right;
-  top:10px;
-  right:5px;
-  font-size: 20px;
+// #turn-button {
+//   position: relative;
+//   float:right;
+//   top:10px;
+//   right:5px;
+//   font-size: 20px;
+// }
+
+#heads-or-tails {
+  color:white;
+  position: absolute;
+  top:43%;
+  left:39%;
+  display:flex;
+  align-items: center;
 }
 
+.h-or-t-btns {
+  margin:20px;
+  width:100px;
+}
 .card-back {
+  position: absolute;
+  border-radius: 10px;
+  width:80px;
+  height:105px;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  right: 0;
+  bottom: 0;
+  background-image: url("badasscardback2.jpeg");
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size:contain;
+  box-shadow: 5px 5px 5px #1d1d28;
+}
+
+.card-back-deck {
   position: relative;
   margin: 5px;
   width:80px;
@@ -340,12 +373,17 @@ hr {
 }
 
 #coin-container {
+  display: none;
   position: absolute;
-  left:580px;
-  bottom: 255px;
+  left:520px;
+  bottom: 71%;
 }
 
 #coin-img {
+position: inherit;
+}
+
+.coin-img-heads {
   position:relative;
   width:300px;
   height:300px;
@@ -353,6 +391,20 @@ hr {
   transform-style:preserve-3d;
   transition: transform .3s ease;
   animation-name: flipCoinHeads;
+  animation-duration: .75s;
+  animation-iteration-count: 3;
+  animation-fill-mode: forwards;
+  animation-timing-function:ease-in-out;
+}
+
+.coin-img-tails {
+  position:relative;
+  width:300px;
+  height:300px;
+  z-index: 4;
+  transform-style:preserve-3d;
+  transition: transform .3s ease;
+  animation-name: flipCoinTails;
   animation-duration: .75s;
   animation-iteration-count: 3;
   animation-fill-mode: forwards;
@@ -396,8 +448,8 @@ hr {
   font-size: 60px;
   display: none;
   position: absolute;
-  top:45%;
-  left: 45%;
+  top:44%;
+  left: 42%;
   transition: transform .3s ease;
   animation-name: zoomIn;
   animation-duration: 3s;
@@ -413,7 +465,7 @@ hr {
   display: none;
   position: absolute;
   top:45%;
-  left: 35%;
+  left: 33%;
   transition: transform .3s ease;
   animation-name: zoomIn;
   animation-duration: 3s;
@@ -447,10 +499,10 @@ hr {
 
 #eyes {
   position: absolute;
-  top:56.8%;
-  left:19.3%;
-  width:100px;
-  height:100px;
+  top:57.1%;
+  left:19.6%;
+  width:93px;
+  height:93px;
   animation-name: blink;
   animation-duration:7s;
   animation-iteration-count: infinite;
@@ -462,8 +514,8 @@ hr {
   z-index: 2;
   display: none;
   position: absolute;
-  top:37%;
-  left:48.5%;
+  top:36%;
+  left:47.5%;
   width:100px;
   height:100px;
   transition: transform .3s ease;
@@ -479,7 +531,7 @@ hr {
   display: none;
   position: absolute;
   top:48%;
-  left:48.5%;
+  left:47.5%;
   width:100px;
   height:100px;
   transition: transform .3s ease;
@@ -536,6 +588,16 @@ hr {
   animation-timing-function:ease;
 }
 
+.p2-attack {
+  transform-style:preserve-3d;
+  transition: transform .5s ease;
+  animation-name: p1Attack;
+  animation-duration: .2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
+  animation-timing-function:ease;
+}
+
 @keyframes p1Attack {
   0% {
             transform: translateY(0);
@@ -545,6 +607,14 @@ hr {
   }
 }
 
+@keyframes p1Attack {
+  0% {
+            transform: translateY(0);
+  }
+  100% {
+            transform: translateY(25px);
+  }
+}
 
 
 /*======================= Flip card =========================== */
@@ -603,7 +673,7 @@ hr {
   }
 }
 
-/*@keyframes rotate3d-tails {
+@keyframes flipCoinTails {
   0% {
      transform:rotate3d(0, 1, 0, 0deg);
   }
@@ -625,15 +695,16 @@ hr {
   100% {
      transform: rotate3d(0, 1, 0, 180deg);
   }
-}*/
+}
+
 
 .hexagon {
   position: relative;
-  width: 100px;
-  height: 57.74px;
-  margin: 28.87px 0;
+  width: 90px;
+  height: 51.96px;
+  margin: 25.98px 0;
   background-image: url('avatar2.jpeg');
-  background-size: auto 92.3760px;
+  background-size: auto 80.8290px;
   background-position: center;
   border-left: solid 10px #514d4d;
   border-right: solid 10px #514d4d;
@@ -643,14 +714,14 @@ hr {
 .hexBottom {
   position: absolute;
   z-index: 1;
-  width: 70.71px;
-  height: 70.71px;
+  width: 63.64px;
+  height: 63.64px;
   overflow: hidden;
   -webkit-transform: scaleY(0.5774) rotate(-45deg);
   -ms-transform: scaleY(0.5774) rotate(-45deg);
   transform: scaleY(0.5774) rotate(-45deg);
   background: inherit;
-  left: 4.64px;
+  left: 3.18px;
 }
 
 /*counter transform the bg image on the caps*/
@@ -658,11 +729,11 @@ hr {
 .hexBottom:after {
   content: "";
   position: absolute;
-  width: 80.0000px;
-  height: 46.188021535170066px;
-  -webkit-transform:  rotate(45deg) scaleY(1.7321) translateY(-23.0940px);
-  -ms-transform:      rotate(45deg) scaleY(1.7321) translateY(-23.0940px);
-  transform:          rotate(45deg) scaleY(1.7321) translateY(-23.0940px);
+  width: 70.0000px;
+  height: 40.414518843273804px;
+  -webkit-transform:  rotate(45deg) scaleY(1.7321) translateY(-20.2073px);
+  -ms-transform:      rotate(45deg) scaleY(1.7321) translateY(-20.2073px);
+  transform:          rotate(45deg) scaleY(1.7321) translateY(-20.2073px);
   -webkit-transform-origin: 0 0;
   -ms-transform-origin: 0 0;
   transform-origin: 0 0;
@@ -670,9 +741,9 @@ hr {
 }
 
 .hexTop {
-  top: -35.3553px;
-  border-top: solid 14.1421px #514d4d;
-  border-right: solid 14.1421px #514d4d;
+  top: -31.8198px;
+  border-top: solid 14.1421px orange;
+  border-right: solid 14.1421px orange;
 }
 
 .hexTop:after {
@@ -680,7 +751,7 @@ hr {
 }
 
 .hexBottom {
-  bottom: -35.3553px;
+  bottom: -31.8198px;
   border-bottom: solid 14.1421px orange;
   border-left: solid 14.1421px orange;
 }
@@ -694,8 +765,8 @@ hr {
   position: absolute;
   top: 5.7735px;
   left: 0;
-  width: 80.0000px;
-  height: 46.1880px;
+  width: 70.0000px;
+  height: 40.4145px;
   z-index: 2;
   background: inherit;
 }
@@ -706,7 +777,7 @@ hr {
   animation-duration: 3s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
-  animation-timing-function:ease-in-out;
+  animation-timing-function:linear;
 }
 
 @keyframes cardDeath {
@@ -751,7 +822,7 @@ hr {
   z-index: 3;
   position: absolute;
   bottom:240px;
-  left:365px;
+  left:355px;
 }
 
 .bubble {

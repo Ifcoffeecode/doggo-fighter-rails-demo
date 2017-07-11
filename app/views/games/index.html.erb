@@ -9,16 +9,16 @@
     </div>
       <div id="p2-deck">
         <ul class="deck" id="p2-add-new-card">
-          <li><div class="card-back"></div></li>
-          <li><div class="card-back"></div></li>
-          <li><div class="card-back"></div></li>
-          <li><div class="card-back"></div></li>
-          <li><div class="card-back"></div></li>
-          <li><div class="card-back"></div></li>
-          <li><div class="card-back"></div></li>
-          <li><div class="card-back"></div></li>
-          <li><div class="card-back"></div></li>
-          <li><div class="card-back"></div></li>
+          <li><div class="card-back-deck"></div></li>
+          <li><div class="card-back-deck"></div></li>
+          <li><div class="card-back-deck"></div></li>
+          <li><div class="card-back-deck"></div></li>
+          <li><div class="card-back-deck"></div></li>
+          <li><div class="card-back-deck"></div></li>
+          <li><div class="card-back-deck"></div></li>
+          <li><div class="card-back-deck"></div></li>
+          <li><div class="card-back-deck"></div></li>
+          <li><div class="card-back-deck"></div></li>
         </ul>
       </div>
       <div class='hand-container'>
@@ -35,7 +35,7 @@
       </div>
       <div class="active-card-marker card-marker" id ="p2-active-card">
     </div>
-</div>
+  </div>
 
   <div id="opponent-turn"><p>Opponent's Turn</p></div>
 
@@ -69,9 +69,9 @@
 
         <div id="p1-menu">
           <div id="p1-buttons-container">
-              <button type="button" onclick="attack()" class="btn btn-warning" id="p1-attack-button">Attack</button>
-              <button type="button" onclick="specialAttack()" class="btn btn-warning" id="p1-special-button">Special</button>
-              <button type="button" onclick="endTurn()" class="btn btn-warning"  id="p1-end-turn-button">End Turn</button>
+              <button type="button" onclick="attack()" class="btn btn-warning btn-sm" id="p1-attack-button">Attack</button>
+              <button type="button" onclick="specialAttack()" class="btn btn-warning btn-sm" id="p1-special-button">Special</button>
+              <button type="button" onclick="endTurn()" class="btn btn-warning btn-sm"  id="p1-end-turn-button">End Turn</button>
             </div>
             <div class="name-container">
               <div class="hexagon" id="p1avatar">
@@ -83,16 +83,16 @@
         </div>
         <div class=""id="p1-deck">
           <ul class="deck" id="p1-add-new-card">
-            <li><div class="card-back"></div></li>
-            <li><div class="card-back"></div></li>
-            <li><div class="card-back"></div></li>
-            <li><div class="card-back"></div></li>
-            <li><div class="card-back"></div></li>
-            <li><div class="card-back"></div></li>
-            <li><div class="card-back"></div></li>
-            <li><div class="card-back"></div></li>
-            <li><div class="card-back"></div></li>
-            <li><div class="card-back"></div></li>
+            <li><div class="card-back-deck"></div></li>
+            <li><div class="card-back-deck"></div></li>
+            <li><div class="card-back-deck"></div></li>
+            <li><div class="card-back-deck"></div></li>
+            <li><div class="card-back-deck"></div></li>
+            <li><div class="card-back-deck"></div></li>
+            <li><div class="card-back-deck"></div></li>
+            <li><div class="card-back-deck"></div></li>
+            <li><div class="card-back-deck"></div></li>
+            <li><div class="card-back-deck"></div></li>
           </ul>
         </div>
 
@@ -101,13 +101,19 @@
       <div id="speech-bubble-container">
         <p class="bubble" id="speech-bubble"></p>
       </div>
+      <div id="heads-or-tails">
+        <button type="button" onclick="headsSelected()" class="btn btn-warning btn-lg h-or-t-btns">Heads</button>
+        <h1>Or</h1>
+        <button type="button" onclick="tailsSelected()" class="btn btn-warning btn-lg h-or-t-btns">Tails</button>
+      </div>
+
       <%= image_tag('eyes.png', id: "eyes") %>
       <%= image_tag("explosion.png", id: "p1-explosion") %>
       <%= image_tag("explosion.png", id: "p2-explosion") %>
-       <!-- <div id="coin-container">
+       <div id="coin-container">
          <div id="coin-img">
            <div id="coin-img-front"></div>
            <div id="coin-img-back"></div>
        </div>
-     </div> -->
+     </div>
   </div>

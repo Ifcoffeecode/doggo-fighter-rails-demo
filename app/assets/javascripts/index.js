@@ -13,6 +13,8 @@ let p2ActiveCardInPlay;
 let p1DefeatedDoggoArr = [];
 let p2DefeatedDoggoArr = [];
 let bubbleText = "";
+let heads = false;
+let tails = false;
 //=====================================SHUFFLE DECK======================================
 //=======================================================================================
 
@@ -314,23 +316,26 @@ function drop(event) {
 function firstTurnDraw () {
   let p1Buttons = document.querySelector('#p1-buttons-container');
   if (p1Turn === true) {
+    yourTurnPopUp();
+    setTimeout(function() {
+
     let setIntCounter = 0;
     let firstTurnInt = setInterval(function(){
       if(setIntCounter === 6){
-        fadeIn(p1Buttons);
         clearInterval(firstTurnInt);
       } else {
         drawCard();
         setIntCounter += 1;
       }
     }, 1500);
+  },2000)
   } else if (p2Turn === true) {
     let setIntCounter = 0;
     let firstTurnInt = setInterval(function(){
       if(setIntCounter === 6){
         clearInterval(firstTurnInt);
         setTimeout(function(){
-          putActiveCardInPlay();
+          firstTurnPutActiveCardInPlay();
         },2000)
       } else {
         drawCard();
@@ -469,6 +474,11 @@ function isUseCardType(element) {
 //===========================P2 A.I. - PLACECARDS ON FIELD===============================
 //=======================================================================================
 
+function firstTurnPutActiveCardInPlay() {
+  setTimeout(function(){
+    putActiveCardInPlay();
+  },7000)
+}
 
 function putActiveCardInPlay(){
   console.log('putActiveCardInPlay HAS BEEN TRIGGERED')
@@ -544,22 +554,22 @@ function putActiveCardInPlay(){
           console.log(newBenchCard,'newBenchCard');
           let removeCard = p2HandArr.shift();
           p2BenchArr.push(removeCard);
-          if(  i === 1 && p2HandArr !== [] ){
+          if(  i === 1 && p2HandArr !== [] && document.getElementById(`p2-bench-2`).hasChildNodes() === false){
             p2BenchNode = document.getElementById(`p2-bench-2`);
             p2BenchNode.appendChild(newBenchCard);
-          } else if( i === 2 && p2HandArr !== []){
+          } else if( i === 2 && p2HandArr !== [] && document.getElementById(`p2-bench-2`).hasChildNodes() === false){
             p2BenchNode = document.getElementById(`p2-bench-3`);
             p2BenchNode.appendChild(newBenchCard);
-          } else if( i === 3 && p2HandArr !== []){
+          } else if( i === 3 && p2HandArr !== [] && document.getElementById(`p2-bench-2`).hasChildNodes() === false){
             p2BenchNode = document.getElementById(`p2-bench-1`);
             p2BenchNode.appendChild(newBenchCard);
-          } else if( i === 3 && p2HandArr !== []){
+          } else if( i === 3 && p2HandArr !== [] && document.getElementById(`p2-bench-2`).hasChildNodes() === false){
             p2BenchNode = document.getElementById(`p2-bench-4`);
             p2BenchNode.appendChild(newBenchCard);
           }
         }
     },2500);
-    } else {
+  } else {
       setTimeout(function(){
         console.log('test3');
         p2Attack();
@@ -578,7 +588,7 @@ function p2Attack () {
   } else if(p2Turn === true && p2ActiveCardInPlay !== undefined && p1ActiveCardInPlay !== undefined) {
     console.log("P2 IS ATTACKING");
     p2ActiveCardInPlay.className += " p1-attack";
-    document.getElementById('p2-active-card').className += " p1-attack";
+    document.getElementById('p2-active-card').className += " p2-attack";
     document.getElementById('p2-explosion').style.display = "inherit";
     setTimeout(function(){
       document.getElementById('p2-explosion').style.display = "none";
@@ -587,7 +597,7 @@ function p2Attack () {
       let target = document.getElementById('p1-active-card').getElementsByTagName("span")[1]
       target.innerHTML = newHp;
       document.getElementById('p2-explosion').style.display = "none";
-      document.getElementById('p2-active-card').classList.remove("p1-attack");
+      document.getElementById('p2-active-card').classList.remove("p2-attack");
       if(p1ActiveCardInPlay.health <= 0 ) {
         p1DefeatedDoggoArr.push(p1ActiveCardInPlay);
         target.innerHTML = 0;
@@ -666,32 +676,61 @@ function endSetUpState(){
 }
 //===========================GAME START - COIN TOSS FOR WHO GOES FIRST===================
 //=======================================================================================
+
+function tailsSelected() {
+  tails = true;
+  heads = false;
+  let ht = document.getElementById('heads-or-tails');
+  fadeOut(ht);
+  chooseWhoGoesFirst();
+}
+
+function headsSelected() {
+  heads = true;
+  tails = false;
+  let ht = document.getElementById('heads-or-tails');
+  fadeOut(ht);
+  chooseWhoGoesFirst();
+}
+
 function chooseWhoGoesFirst() {
   if(gameStart === true){
-    // p1Turn  = true;
-    // flip a coin for who goes first
     gameStart = false;
+    let coinContainer = document.getElementById('coin-container');
+    let coin = document.getElementById('coin-img');
+    fadeIn(coinContainer);
     var flipCoin = Math.floor((Math.random() * 2) + 1);
     if(flipCoin === 2){
-      console.log('player 2 won coin toss');
-      //player 2 wins the toss
-      //make Your Turn pop up on the screen for player
-      //turn on the functions for player who won the toss
-      p2Turn  = true;
-      p1Turn  = false;
-      // setTimeout(function(){
-        firstTurnDraw();
-      // }, 5000);
+      setTimeout(function(){
+        coin.className += (' coin-img-tails');
+      },1000)
+      if(tails === false) {
+        p2Turn  = true;
+        p1Turn  = false;
+      } else if(tails === true) {
+        p2Turn  = false;
+        p1Turn  = true;
+      } setTimeout(function(){
+          coin.classList.remove('coin-img-tails');
+          fadeOut(coinContainer);
+          firstTurnDraw();
+        }, 5000);
     } else {
-      console.log('player 1 won coin toss');
-      //player 1 wins the toss
-      //make Your Turn pop up on the screen for player
-      //turn on the functions for player who won the toss
-      p1Turn  = true;
-      p2Turn  = false;
-      // setTimeout(function(){
+      setTimeout(function(){
+        coin.className += (' coin-img-heads');
+      },1000)
+      if(heads === false) {
+        p2Turn  = true;
+        p1Turn  = false;
+      } else if(heads === true) {
+        p2Turn  = false;
+        p1Turn  = true;
+      }
+      setTimeout(function(){
+        coin.classList.remove('coin-img-heads');
+        fadeOut(coinContainer);
         firstTurnDraw();
-      // }, 5000);
+      }, 5000);
     }
   }
 }
