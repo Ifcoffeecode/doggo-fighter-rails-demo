@@ -4,11 +4,11 @@
     <!-- Hello <%= current_user.full_name %>, -->
     <%= link_to "Start New Game", games_path , class: "btn btn-warning login-btn" %>
     <br>
-    <%= link_to "How To Play", new_user_path , class: "btn btn-warning login-btn" %>
+    <%= link_to "How To Play", how_to_play_path , class: "btn btn-warning login-btn" %>
     <br>
-    <%= link_to "Card List", new_user_path , class: "btn btn-warning login-btn" %>
+    <%= link_to "Card List", cards_path , class: "btn btn-warning login-btn" %>
     <br>
-    <%= link_to "Leader Board", new_user_path , class: "btn btn-warning login-btn" %>
+    <%= link_to "Leader Board", leaderboard_path , class: "btn btn-warning login-btn" %>
     <br>
     <%= link_to "Logout", sessions_path, class: "btn btn-warning login-btn", method: :delete,
     data: {confirm: "Are you sure you want to log out?"}%>

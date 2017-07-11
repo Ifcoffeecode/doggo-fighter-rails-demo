@@ -1,8 +1,8 @@
-<body class="sign-in-page">
+<div class="sign-in-page">
 <div id="sign-up-background">
   <div id="sign-up-container">
-    <h1>Sign Up</h1>
-
+    <h1 id="sign-up-h1">Sign Up</h1>
+    <br>
     <div id="sign-up-errors">
     <% if @user.errors.any? %>
       <ul>
@@ -42,4 +42,4 @@
     <% end %>
   </div>
 </div>
-</body>
+</div>

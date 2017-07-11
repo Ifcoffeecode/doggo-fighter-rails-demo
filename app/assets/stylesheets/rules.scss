@@ -1,15 +1,17 @@
-// Place all the styles related to the sessions controller here.
+// Place all the styles related to the rules controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#login-background {
+
+#rules-container {
   position: relative;
-  top: 25%;
+  top: 18%;
+  left:10%;
   margin: auto;
-  padding-bottom: 50px;
-  width: 25%;
+  padding:50px;
+  width: 60%;
   background-color: transparentize(#3b3d3f, .3);
-  height: 55%;
+  height: 70%;
   border: medium orange solid;
   border-radius: 10px;
   display: flex;
@@ -17,5 +19,10 @@
   justify-content: center;
   align-items: center;
   padding-top: 5%;
-  color:#ff8300;
+  color:white;
+}
+
+#rules-container > h3 {
+  margin:0;
+  color:orange;
 }

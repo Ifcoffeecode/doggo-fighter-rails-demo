@@ -1,0 +1,44 @@
+// Place all the styles related to the leaderboards controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#leaderboard-header {
+  color: #ff8300;
+  text-align: center;
+  margin-top: 0;
+  padding-top: 100px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    position: relative;
+    top: 18%;
+    // left:10%;
+    margin: auto;
+    padding:50px;
+    width: 60%;
+    background-color: transparentize(#3b3d3f, .3);
+    height: 70%;
+    border: medium orange solid;
+    border-radius: 10px;
+    align-items: center;
+    padding-top: 5%;
+    color:white;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: orange;
+}
+
+tr:nth-child(odd) {
+    background-color: transparentize(#3b3d3f, .3);;
+}
