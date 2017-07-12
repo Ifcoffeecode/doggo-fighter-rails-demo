@@ -18,11 +18,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 5%;
   color:white;
+
 }
 
 #rules-container > h3 {
   margin:0;
   color:orange;
+}
+
+.pull-left {
+  margin-right: auto;
 }

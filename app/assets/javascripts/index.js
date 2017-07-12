@@ -42,7 +42,6 @@ function drawCard() {
     let drawnCard = p1Deck.pop();
     p1HandArr.push(drawnCard);
     drawnCardId = drawnCard;
-    console.log(drawnCard);
     //create elements
     let newCard = document.createElement("li");
     let newCardImgContainer = document.createElement("div");
@@ -88,7 +87,6 @@ function drawCard() {
     let drawnCard = p2Deck.pop();
     p2HandArr.push(drawnCard);
     drawnCardId = drawnCard;
-    console.log(drawnCard);
     //create elements
 
     let newCard = document.createElement("li");
@@ -158,7 +156,6 @@ function placeInHand () {
       }, 5000);
 
     } else if (firstTurn === true && p2Turn === true) {
-      console.log("first turn is TRUE")
         p2NewCard.classList.remove("flipCard");
         p2NewCard.removeAttribute("id", 'p2-new-card');
         p2NewCard.setAttribute("id", `${drawnCardId.cardId}`);
@@ -231,7 +228,6 @@ function yourTurnPopUp () {
     if(p1Turn === true) {
     turn.style.display = "inherit";
     setTimeout(function(){
-      console.log(turn);
       turn.style.display = 'none';
       fadeIn(p1Buttons);
     }, 2500);
@@ -239,7 +235,6 @@ function yourTurnPopUp () {
     fadeOut(p1Buttons);
     opponentTurn.style.display = "inherit";
     setTimeout(function(){
-      console.log(turn);
       opponentTurn.style.display = 'none';
     }, 2500);
   }
@@ -266,7 +261,6 @@ function drop(event) {
   event.preventDefault();
   let data = event.dataTransfer.getData("text");
   let draggedCard = document.getElementById(data);
-  console.log(data, 'data - card being dropped');
 
   if(p1Turn === true && event.target.classList.contains("droppable")){
     if(event.target.classList.contains("p1-bench-marker")){
@@ -364,7 +358,6 @@ function attack () {
         document.getElementById('p1-explosion').style.display = "inherit";
       setTimeout(function(){
         let newHp = (p2ActiveCardInPlay.health = (p2ActiveCardInPlay.health - p1ActiveCardInPlay.attack));
-        console.log(newHp);
         let target = document.getElementById('p2-active-card').getElementsByTagName("span")[1]
         target.innerHTML = newHp;
         document.getElementById('p1-explosion').style.display = "none";
@@ -481,47 +474,35 @@ function firstTurnPutActiveCardInPlay() {
 }
 
 function putActiveCardInPlay(){
-  console.log('putActiveCardInPlay HAS BEEN TRIGGERED')
   let p2ActiveCardNode = document.getElementById('p2-active-card');
   let randomNum = Math.floor((Math.random() * p2HandArr.length - 1) + 1);
 
   if(p2Turn === true && p2ActiveCardInPlay === undefined) {
-    console.log(randomNum," :randomNum, P2 HAS NO ACTIVE CARD");
     if (p2BenchArr.length === 0 && isDoggoCardType(p2HandArr[randomNum]) === true) {
-      console.log("putActiveCardInPlay if p2BenchArr.length === 0");
       let removeCardFromHand = p2HandArr.splice(randomNum,1);
-      console.log(removeCardFromHand, 'check if array or not (should be array)')
       p2ActiveCardInPlay = removeCardFromHand.shift();
-      console.log(document.getElementById(p2ActiveCardInPlay.cardId), 'p2ActiveCardInPlay')
       p2ActiveCardNode.appendChild(document.getElementById(p2ActiveCardInPlay.cardId));
       setTimeout(function(){
         putCardsOnBench();
       },2000);
     } else if (p2BenchArr.length > 0 && p2ActiveCardInPlay === undefined) {
-      console.log("P2 HAS NO ACTIVE CARD AND BENCH HAS MORE THEN 1");
       let randomBenchNum = Math.floor((Math.random() * p2BenchArr.length - 1) + 1);
       let removeCardFromBench = p2BenchArr.splice(randomBenchNum,1);
       p2ActiveCardInPlay = removeCardFromBench.shift();
       p2ActiveCardNode.appendChild(document.getElementById(p2ActiveCardInPlay.cardId));
-      console.log("putActiveCardInPlay if use card should fire now");
-      console.log('putActiveCardInPlay  if p2BenchArr.length >= 1  attack');
       setTimeout(function(){
-        console.log('test4');
         p2Attack();
-      },2000);  console.log(" THIS IS A TEST 2");
+      },2000);
     } else if(p2BenchArr.length === 0 && isUseCardType(p2HandArr[randomNum]) === true && p2ActiveCardInPlay === undefined){
-      console.log('Use Card Found Trying Again');
-      putActiveCardInPlay();  console.log(" THIS IS A TEST 3");
+      putActiveCardInPlay();
     }
   }  else if(p2BenchArr.length >= 1 && p2ActiveCardInPlay !== undefined){
     setTimeout(function(){
-      console.log('test5');
       p2Attack();
     },3000);
   } else if(p2BenchArr.length === 0){
     putCardsOnBench();
   }
-  console.log(" EXIT putActiveCardInPlay");
 }
 
   function putCardsOnBench () {
@@ -530,28 +511,20 @@ function putActiveCardInPlay(){
     if(p2Turn === true && p2ActiveCardInPlay !== undefined && p2BenchArr.length === 0){
       let randomNumBench = Math.floor((Math.random() * 4) + 1);
       let i = 0;
-      console.log('GOING INTO SET INTERVAL LOOP.....AH OH!');
       let benchPlacement = setInterval(function(){
         i += 1;
         if(p2HandArr === []){
-          console.log('bench set int if [] attack/ CLEAR INT');
           setTimeout(function(){
-            console.log('test2');
             p2Attack();
           }, 3000);
           clearInterval(benchPlacement);
         } else if( i >= randomNumBench){
-          console.log('bench set int if i > randomNumBench attack/ CLEAR INT');
           setTimeout(function(){
-            console.log('test1');
             p2Attack();
           }, 3000);
           clearInterval(benchPlacement);
         } else {
-          console.log(i,'i: count at 1');
-          console.log(p2HandArr,'p2HandArr');
           newBenchCard = document.getElementById(p2HandArr[0].cardId);
-          console.log(newBenchCard,'newBenchCard');
           let removeCard = p2HandArr.shift();
           p2BenchArr.push(removeCard);
           if(  i === 1 && p2HandArr !== [] && document.getElementById(`p2-bench-2`).hasChildNodes() === false){
@@ -571,7 +544,6 @@ function putActiveCardInPlay(){
     },2500);
   } else {
       setTimeout(function(){
-        console.log('test3');
         p2Attack();
       },6000)
     }
@@ -581,19 +553,15 @@ function putActiveCardInPlay(){
 //=======================================================================================
 
 function p2Attack () {
-  console.log("P2 IS STARTING ATTACK");
   if(setUp === true){
-    console.log("SETUP ROUND END TURN FOR P2");
     p2EndTurn();
   } else if(p2Turn === true && p2ActiveCardInPlay !== undefined && p1ActiveCardInPlay !== undefined) {
-    console.log("P2 IS ATTACKING");
     p2ActiveCardInPlay.className += " p1-attack";
     document.getElementById('p2-active-card').className += " p2-attack";
     document.getElementById('p2-explosion').style.display = "inherit";
     setTimeout(function(){
       document.getElementById('p2-explosion').style.display = "none";
       let newHp = (p1ActiveCardInPlay.health = (p1ActiveCardInPlay.health - p2ActiveCardInPlay.attack));
-      console.log(newHp);
       let target = document.getElementById('p1-active-card').getElementsByTagName("span")[1]
       target.innerHTML = newHp;
       document.getElementById('p2-explosion').style.display = "none";
@@ -610,7 +578,6 @@ function p2Attack () {
       p2EndTurn();
     }, 3500);
   }
-  console.log("P2 ATTACKING END------");
 }
 
 

@@ -1,3 +1,38 @@
 // Place all the styles related to the cards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#card-list {
+  margin: auto;
+  display: inline-block;
+  position: relative;
+  bottom: 0;
+  height:75%;
+  width:80%;
+  padding-top:120px;
+  padding-left:200px;
+}
+
+#card-list-container {
+  background-color: transparentize(#3b3d3f, .3);
+  border: medium orange solid;
+  border-radius: 10px;
+}
+
+#card-list-title {
+  position: absolute;
+  top:7%;
+  left:45%;
+  font-weight: bolder;
+  color: #ff8300;
+  text-align: center;
+}
+
+#cards-page {
+  padding-top: 20px;
+  height: 900px;
+  background-image: url("loginpagebackground1.jpeg");
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
