@@ -15,6 +15,8 @@ let p2DefeatedDoggoArr = [];
 let bubbleText = "";
 let heads = false;
 let tails = false;
+
+
 //=====================================SHUFFLE DECK======================================
 //=======================================================================================
 
@@ -48,7 +50,10 @@ function drawCard() {
     let newCardImg = document.createElement("IMG");
     let newCardFront = document.createElement("div");
     let newCardBack = document.createElement("div");
-    let newCardSpecial = document.createElement("p");
+    let newCardNameContainer = document.createElement("p");
+    let newCardName = document.createTextNode(`${drawnCard.name}`);
+    let newCardSpecialContainer = document.createElement("p");
+    let newCardSpecial = document.createTextNode(`${drawnCard.special}`);
     let newCardAtkAndHpBox = document.createElement("p");
     let newCardAtkBox = document.createElement("span");
     let newCardAtkBoxSeparator = document.createTextNode('/');
@@ -63,6 +68,8 @@ function drawCard() {
     newCardImg.setAttribute("src", drawnCard.image);
     newCardFront.className = "card-front-background";
     newCardBack.className = "card-back-for-flip";
+    newCardNameContainer.className = "card-name-container";
+    newCardSpecialContainer.className = "card-special-container";
     newCardSpecial.className = "card-special";
     newCardAtkAndHpBox.className = "atk-hp-box";
     newCardAtkBox.className = "atk-box";
@@ -72,8 +79,11 @@ function drawCard() {
     newCardImgContainer.append(newCardImg);
     newCard.append(newCardFront);
     newCard.append(newCardBack);
-    newCardFront.append(newCardSpecial);
-    newCardSpecial.append(newCardAtkAndHpBox);
+    newCardFront.append(newCardNameContainer);
+    newCardNameContainer.append(newCardName);
+    newCardFront.append(newCardSpecialContainer);
+    newCardSpecialContainer.append(newCardAtkAndHpBox);
+    newCardSpecialContainer.append(newCardSpecial);
     newCardAtkAndHpBox.append(newCardAtkBox);
     newCardAtkBox.append(atkBoxAttack);
     newCardAtkAndHpBox.append(newCardAtkBoxSeparator);
@@ -88,13 +98,15 @@ function drawCard() {
     p2HandArr.push(drawnCard);
     drawnCardId = drawnCard;
     //create elements
-
     let newCard = document.createElement("li");
     let newCardImgContainer = document.createElement("div");
     let newCardImg = document.createElement("IMG");
     let newCardFront = document.createElement("div");
     let newCardBack = document.createElement("div");
-    let newCardSpecial = document.createElement("p");
+    let newCardNameContainer = document.createElement("p");
+    let newCardName = document.createTextNode(`${drawnCard.name}`);
+    let newCardSpecialContainer = document.createElement("p");
+    let newCardSpecial = document.createTextNode(`${drawnCard.special}`);
     let newCardAtkAndHpBox = document.createElement("p");
     let newCardAtkBox = document.createElement("span");
     let newCardAtkBoxSeparator = document.createTextNode('/');
@@ -103,12 +115,14 @@ function drawCard() {
     let atkBoxHealth = document.createTextNode(`${drawnCard.health}`);
     //add Id and/or className to elements
     newCard.setAttribute("id", "p2-new-card");
-    newCard.className = "card-front flipCard p2-hcard";
+    newCard.className = "card-front p2-hcard";
     newCardImgContainer.className = "card-img-holder";
     newCardImg.className = "card-img";
     newCardImg.setAttribute("src", drawnCard.image);
+    newCardNameContainer.className = "card-name-container";
     newCardFront.className = "card-front-background";
     newCardBack.className = "card-back-for-flip";
+    newCardSpecialContainer.className = "card-special-container";
     newCardSpecial.className = "card-special";
     newCardAtkAndHpBox.className = "atk-hp-box";
     newCardAtkBox.className = "atk-box";
@@ -118,8 +132,11 @@ function drawCard() {
     newCardImgContainer.append(newCardImg);
     newCard.append(newCardFront);
     newCard.append(newCardBack);
-    newCardFront.append(newCardSpecial);
-    newCardSpecial.append(newCardAtkAndHpBox);
+    newCardFront.append(newCardSpecialContainer);
+    newCardFront.append(newCardNameContainer);
+    newCardNameContainer.append(newCardName);
+    newCardSpecialContainer.append(newCardAtkAndHpBox);
+    newCardSpecialContainer.append(newCardSpecial);
     newCardAtkAndHpBox.append(newCardAtkBox);
     newCardAtkBox.append(atkBoxAttack);
     newCardAtkAndHpBox.append(newCardAtkBoxSeparator);
@@ -144,25 +161,23 @@ function placeInHand () {
     if (firstTurn === true && p1Turn === true) {
       p1NewCard.setAttribute("draggable","true");
       p1NewCard.setAttribute("ondragstart","drag(event)");
-      p1NewCard.className += " first-turn-scale";
+      // p1NewCard.className += " first-turn-scale";
       p1NewCard.classList.remove("flipCard");
       p1NewCard.removeAttribute("id", 'p1-new-card');
       p1NewCard.setAttribute("id", `${drawnCardId.cardId}`);
       p1Hand.appendChild(p1NewCard);
 
       setTimeout(function(){
-        p1NewCard.classList.remove("first-turn-scale");
+        // p1NewCard.classList.remove("first-turn-scale");
         p1NewCard.className += " p1-hover";
       }, 5000);
 
     } else if (firstTurn === true && p2Turn === true) {
-        p2NewCard.classList.remove("flipCard");
         p2NewCard.removeAttribute("id", 'p2-new-card');
         p2NewCard.setAttribute("id", `${drawnCardId.cardId}`);
         p2Hand.appendChild(p2NewCard);
 
         setTimeout(function(){
-          p2NewCard.classList.remove("first-turn-scale");
           p2NewCard.className += " p2-hover";
         }, 1000);
 
@@ -178,7 +193,6 @@ function placeInHand () {
     }, 1500);
   } else if (p2Turn === true && firstTurn === false) {
     setTimeout(function(){
-       p2NewCard.classList.remove("flipCard");
        p2NewCard.removeAttribute("id", 'p2-new-card');
        p2NewCard.setAttribute("id", `${drawnCardId.cardId}`);
        p2Hand.appendChild(p2NewCard);
@@ -208,7 +222,7 @@ function fadeIn(element, display){
   element.style.opacity = 0;
 
   (function fade() {
-    var val = parseFloat(element.style.opacity);
+    let val = parseFloat(element.style.opacity);
     if (!((val += .1) > 1)) {
       element.style.opacity = val;
       requestAnimationFrame(fade);
@@ -221,6 +235,7 @@ function fadeIn(element, display){
 
 
 function yourTurnPopUp () {
+  console.log("your turn is being run");
     let turn = document.getElementById('your-turn');
     let opponentTurn = document.getElementById('opponent-turn');
     let p1Buttons = document.querySelector('#p1-buttons-container');
@@ -243,6 +258,12 @@ function yourTurnPopUp () {
 //=====================================DRAG DROP=========================================
 //=======================================================================================
 
+
+
+
+
+
+
 function ignoreEvent(event) {
   event.preventDefault();
 }
@@ -261,44 +282,46 @@ function drop(event) {
   event.preventDefault();
   let data = event.dataTransfer.getData("text");
   let draggedCard = document.getElementById(data);
+  console.log(data, "data");
 
-  if(p1Turn === true && event.target.classList.contains("droppable")){
+  function checkCardId(card) {
+      return card.cardId === data;
+  }
+
+  if(event.target.classList.contains("active-card-marker")) {
+    draggedCard.setAttribute("draggable", "false");
+    if(draggedCard.classList.contains("p1-hcard")) {
+      let currentActiveCard = p1HandArr.filter(checkCardId);
+      let removeCard = p1HandArr.indexOf(currentActiveCard);
+      p1HandArr.splice(removeCard);
+      p1ActiveCardInPlay = currentActiveCard.shift();
+      event.target.appendChild(document.getElementById(data));
+      draggedCard.classList.remove("p1-hover");
+      event.target.classList.remove("droppable");
+    } else if(draggedCard.classList.contains("p1-bcard")) {
+      let currentActiveCard = p1BenchArr.filter(checkCardId);
+      let removeCard = p1BenchArr.indexOf(currentActiveCard);
+      p1BenchArr.splice(removeCard);
+      p1ActiveCardInPlay = currentActiveCard.shift();
+      event.target.appendChild(document.getElementById(data));
+      currentActiveCard.classList.remove("p1-hover");
+      event.target.classList.remove("droppable");
+    }
+  } else if(p1Turn === true && event.target.classList.contains("droppable")){
     if(event.target.classList.contains("p1-bench-marker")){
       if(draggedCard.classList.contains("p1-hcard")) {
-        let newBenchCard = p1HandArr.filter(function(card){
-          return card.cardId === data;
-        });
+        let newBenchCard = p1HandArr.filter(checkCardId);
         let removeCard = p1HandArr.indexOf(newBenchCard);
-        p1HandArr.splice(removeCard);
+        let test = p1HandArr.splice(removeCard);
         p1BenchArr.push(newBenchCard[0]);
         event.target.appendChild(document.getElementById(data));
         draggedCard.classList.remove("p1-hover");
+        draggedCard.classList.remove("p1-hcard");
         event.target.classList.remove("droppable");
         draggedCard.className += " p1-bcard";
-      }
-    } else if(event.target.classList.contains("active-card-marker")) {
-      draggedCard.setAttribute("draggable", "false");
-      if(draggedCard.classList.contains("p1-hcard")) {
-        let currentActiveCard = p1HandArr.filter(function(card){
-          return card.cardId === data;
-        });
-        let removeCard = p1HandArr.indexOf(currentActiveCard);
-        p1HandArr.splice(removeCard);
-        p1ActiveCardInPlay = currentActiveCard.shift();
-        event.target.appendChild(document.getElementById(data));
-        draggedCard.classList.remove("p1-hover");
-        event.target.classList.remove("droppable");
       } else if(draggedCard.classList.contains("p1-bcard")) {
-        let currentActiveCard = p1BenchArr.filter(function(card){
-          return card.cardId === data;
-        });
-        let removeCard = p1BenchArr.indexOf(currentActiveCard);
-        p1BenchArr.splice(removeCard);
-        p1ActiveCardInPlay = currentActiveCard.shift();
-        event.target.appendChild(document.getElementById(data));
-        draggedCard.classList.remove("p1-hover");
-        event.target.classList.remove("droppable");
-      }
+          event.target.appendChild(document.getElementById(data))
+        }
     }
   }
 }
@@ -310,32 +333,28 @@ function drop(event) {
 function firstTurnDraw () {
   let p1Buttons = document.querySelector('#p1-buttons-container');
   if (p1Turn === true) {
-    yourTurnPopUp();
-    setTimeout(function() {
-
     let setIntCounter = 0;
     let firstTurnInt = setInterval(function(){
-      if(setIntCounter === 6){
+      if(setIntCounter === 4){
         clearInterval(firstTurnInt);
       } else {
         drawCard();
         setIntCounter += 1;
       }
-    }, 1500);
-  },2000)
+    }, 1150);
   } else if (p2Turn === true) {
     let setIntCounter = 0;
     let firstTurnInt = setInterval(function(){
-      if(setIntCounter === 6){
+      if(setIntCounter === 4){
         clearInterval(firstTurnInt);
         setTimeout(function(){
           firstTurnPutActiveCardInPlay();
-        },2000)
+        },1500)
       } else {
         drawCard();
         setIntCounter += 1;
       }
-    }, 1500);
+    }, 1150);
  }
 }
 
@@ -354,35 +373,35 @@ function attack () {
       speechBubbleContainer.style.display = "none";
     }, 3000);
   } else if(p1Turn === true && p1ActiveCardInPlay !== undefined ) {
-      document.getElementById('p1-active-card').className += " p1-attack";
-        document.getElementById('p1-explosion').style.display = "inherit";
-      setTimeout(function(){
-        let newHp = (p2ActiveCardInPlay.health = (p2ActiveCardInPlay.health - p1ActiveCardInPlay.attack));
-        let target = document.getElementById('p2-active-card').getElementsByTagName("span")[1]
-        target.innerHTML = newHp;
-        document.getElementById('p1-explosion').style.display = "none";
-        document.getElementById('p1-active-card').classList.remove("p1-attack");
-        if(p2ActiveCardInPlay.health <= 0 ) {
-          target.innerHTML = 0;
-          p2DefeatedDoggoArr.push(p2ActiveCardInPlay);
-          killCard(p2ActiveCardInPlay);
-          p2ActiveCardInPlay = undefined;
-        }
-      },1000);
-      setTimeout(function(){
-        endTurn();
-      },3000);
-    } else if(p1Turn === true && p1ActiveCardInPlay === undefined) {
-      let speechBubble = document.getElementById('speech-bubble');
-      let speechBubbleContainer = document.getElementById('speech-bubble-container');
-      speechBubbleContainer.style.display = "block";
-      bubbleText = "You must have an active doggo to attack.";
-      speechBubble.innerHTML = bubbleText;
-      setTimeout(function(){
-        speechBubbleContainer.style.display = "none";
-      }, 3000);
-    }
+    document.getElementById(p1ActiveCardInPlay.cardId).className += " p1-attack";
+    document.getElementById('p1-explosion').style.display = "inherit";
+    setTimeout(function(){
+      let newHp = (p2ActiveCardInPlay.health = (p2ActiveCardInPlay.health - p1ActiveCardInPlay.attack));
+      let target = document.getElementById('p2-active-card').getElementsByTagName("span")[1]
+      target.innerHTML = newHp;
+      document.getElementById('p1-explosion').style.display = "none";
+      document.getElementById(p1ActiveCardInPlay.cardId).classList.remove("p1-attack");
+      if(p2ActiveCardInPlay.health <= 0 ) {
+        target.innerHTML = 0;
+        p2DefeatedDoggoArr.push(p2ActiveCardInPlay);
+        killCard(p2ActiveCardInPlay);
+        p2ActiveCardInPlay = undefined;
+      }
+    },1000);
+    setTimeout(function(){
+      endTurn();
+    },500);
+  } else if(p1Turn === true && p1ActiveCardInPlay === undefined) {
+    let speechBubble = document.getElementById('speech-bubble');
+    let speechBubbleContainer = document.getElementById('speech-bubble-container');
+    speechBubbleContainer.style.display = "block";
+    bubbleText = "You must have an active doggo to attack.";
+    speechBubble.innerHTML = bubbleText;
+    setTimeout(function(){
+      speechBubbleContainer.style.display = "none";
+    }, 3000);
   }
+}
 
 function specialAttack () {
   let speechBubble = document.getElementById('speech-bubble');
@@ -392,7 +411,7 @@ function specialAttack () {
   speechBubble.innerHTML = bubbleText;
   setTimeout(function(){
     speechBubbleContainer.style.display = "none";
-  }, 3000);
+  }, 3500);
 }
 
 function endTurn () {
@@ -415,9 +434,6 @@ function endTurn () {
         setTimeout(function(){
           firstTurnDraw();
         }, 2500)
-        setTimeout(function(){
-          putActiveCardInPlay();
-        },10000);
       } else if( setUp === true && setUpCounter === 1) {
           setUpCounter += 1;
           endSetUpState();
@@ -467,10 +483,10 @@ function isUseCardType(element) {
 //===========================P2 A.I. - PLACECARDS ON FIELD===============================
 //=======================================================================================
 
-function firstTurnPutActiveCardInPlay() {
+function firstTurnPutActiveCardInPlay () {
   setTimeout(function(){
     putActiveCardInPlay();
-  },7000)
+  },2000)
 }
 
 function putActiveCardInPlay(){
@@ -506,46 +522,46 @@ function putActiveCardInPlay(){
 }
 
   function putCardsOnBench () {
-    let newBenchCard;
+    let newBenchCardToPlace;
     let p2BenchNode;
     if(p2Turn === true && p2ActiveCardInPlay !== undefined && p2BenchArr.length === 0){
-      let randomNumBench = Math.floor((Math.random() * 4) + 1);
+      let randomNumBench = Math.floor((Math.random() * 3) + 2);
       let i = 0;
       let benchPlacement = setInterval(function(){
         i += 1;
         if(p2HandArr === []){
           setTimeout(function(){
             p2Attack();
-          }, 3000);
+          }, 1500);
           clearInterval(benchPlacement);
         } else if( i >= randomNumBench){
           setTimeout(function(){
             p2Attack();
-          }, 3000);
+          }, 1500);
           clearInterval(benchPlacement);
         } else {
-          newBenchCard = document.getElementById(p2HandArr[0].cardId);
+          newBenchCardToPlace = document.getElementById(p2HandArr[0].cardId);
           let removeCard = p2HandArr.shift();
           p2BenchArr.push(removeCard);
           if(  i === 1 && p2HandArr !== [] && document.getElementById(`p2-bench-2`).hasChildNodes() === false){
             p2BenchNode = document.getElementById(`p2-bench-2`);
-            p2BenchNode.appendChild(newBenchCard);
+            p2BenchNode.appendChild(newBenchCardToPlace);
           } else if( i === 2 && p2HandArr !== [] && document.getElementById(`p2-bench-2`).hasChildNodes() === false){
             p2BenchNode = document.getElementById(`p2-bench-3`);
-            p2BenchNode.appendChild(newBenchCard);
+            p2BenchNode.appendChild(newBenchCardToPlace);
           } else if( i === 3 && p2HandArr !== [] && document.getElementById(`p2-bench-2`).hasChildNodes() === false){
             p2BenchNode = document.getElementById(`p2-bench-1`);
-            p2BenchNode.appendChild(newBenchCard);
+            p2BenchNode.appendChild(newBenchCardToPlace);
           } else if( i === 3 && p2HandArr !== [] && document.getElementById(`p2-bench-2`).hasChildNodes() === false){
             p2BenchNode = document.getElementById(`p2-bench-4`);
-            p2BenchNode.appendChild(newBenchCard);
+            p2BenchNode.appendChild(newBenchCardToPlace);
           }
         }
-    },2500);
+    },1500);
   } else {
       setTimeout(function(){
         p2Attack();
-      },6000)
+      },2000)
     }
   }
 
@@ -556,8 +572,8 @@ function p2Attack () {
   if(setUp === true){
     p2EndTurn();
   } else if(p2Turn === true && p2ActiveCardInPlay !== undefined && p1ActiveCardInPlay !== undefined) {
-    p2ActiveCardInPlay.className += " p1-attack";
-    document.getElementById('p2-active-card').className += " p2-attack";
+    console.log('p2Attacking')
+    document.getElementById(p2ActiveCardInPlay.cardId).className += " p2-attack";
     document.getElementById('p2-explosion').style.display = "inherit";
     setTimeout(function(){
       document.getElementById('p2-explosion').style.display = "none";
@@ -565,7 +581,7 @@ function p2Attack () {
       let target = document.getElementById('p1-active-card').getElementsByTagName("span")[1]
       target.innerHTML = newHp;
       document.getElementById('p2-explosion').style.display = "none";
-      document.getElementById('p2-active-card').classList.remove("p2-attack");
+      document.getElementById(p2ActiveCardInPlay.cardId).classList.remove("p2-attack");
       if(p1ActiveCardInPlay.health <= 0 ) {
         p1DefeatedDoggoArr.push(p1ActiveCardInPlay);
         target.innerHTML = 0;
@@ -576,7 +592,7 @@ function p2Attack () {
     },1000);
     setTimeout(function(){
       p2EndTurn();
-    }, 3500);
+    }, 1500);
   }
 }
 
@@ -631,8 +647,16 @@ function killCard(card) {
     setTimeout(function(){
       deadCard.remove();
     }, 3500);
+    endGame();
 }
 
+function endGame (){
+  if(p2DefeatedDoggoArr.length === 1){
+    document.getElementById('you-win').style.display = "inherit";
+  } else if(p1DefeatedDoggoArr.length === 1){
+    document.getElementById('you-lose').style.display = "inherit";
+  }
+}
 //===========================GAME SETUP STATE============================================
 //=======================================================================================
 function endSetUpState(){
@@ -641,6 +665,8 @@ function endSetUpState(){
     firstTurn = false;
   }
 }
+
+
 //===========================GAME START - COIN TOSS FOR WHO GOES FIRST===================
 //=======================================================================================
 
@@ -681,7 +707,8 @@ function chooseWhoGoesFirst() {
           coin.classList.remove('coin-img-tails');
           fadeOut(coinContainer);
           firstTurnDraw();
-        }, 5000);
+          yourTurnPopUp();
+        }, 4500);
     } else {
       setTimeout(function(){
         coin.className += (' coin-img-heads');
@@ -697,38 +724,8 @@ function chooseWhoGoesFirst() {
         coin.classList.remove('coin-img-heads');
         fadeOut(coinContainer);
         firstTurnDraw();
-      }, 5000);
+        yourTurnPopUp();
+      }, 4500);
     }
   }
 }
-
-//===========================MOUSE OVER SHOWCARD DETAILS====================================
-//==========================================================================================
-//
-// document.getElementsByClassName("card-front").addEventListener("mouseover", cardDetails);
-// document.getElementsByClassName("card-front").addEventListener("mouseout", cardDetailsRemove);
-//
-// let clone = "";
-//
-// function cardDetails() {
-//   setTimeout(function(){
-//     clone = document.getElementsByClassName("card-front").cloneNode(true);
-//     clone.className += " center-me"
-//   })
-// }
-//
-// function cardDetailsRemove() {
-//     clone = ""
-// }
-//
-//
-// var classname = document.getElementsByClassName("classname");
-//
-// var myFunction = function() {
-//     var attribute = this.getAttribute("data-myattribute");
-//     alert(attribute);
-// };
-//
-// for (var i = 0; i < classname.length; i++) {
-//     classname[i].addEventListener('click', myFunction, false);
-// }

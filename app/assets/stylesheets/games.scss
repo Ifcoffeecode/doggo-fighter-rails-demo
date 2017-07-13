@@ -1,6 +1,6 @@
 #game-page {
   height: 730px;
-  background-image: url("cardbackgroundalley3.jpg");
+  background-image: url("cardbackgroundalleyfinal.jpg");
   background-position:center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -254,11 +254,29 @@ hr {
 }
 
 .p1-hover:hover {
-  /*transition-delay:1s;*/
-  /*transition: transform .3s ease;*/
+  transition-delay:1s;
+  transition: transform .3s ease;
   z-index: 1;
-  margin-top: -20px;
-  /*transform: scale(3);*/
+  margin-top: -70px;
+  transform: scale(2);
+}
+
+#cloned-card-holder {
+  position: absolute;
+  right:20%;
+  top:30%;
+  width:170px;
+  height:220px;
+}
+
+.enlarge {
+  transition: transform .3s easeOut;
+}
+
+.enlarge:hover {
+  transition: transform .3s ease;
+  z-index: 1;
+  transform: scale(2.5);
 }
 
 
@@ -281,12 +299,35 @@ hr {
  height:100%;
 }
 
-.card-special {
+.card-name-container {
+  color:black;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+  backface-visibility: hidden;
+  position: absolute;
+  left:10%;
+  bottom: 42px;
+  font-size: 7px;
+  margin: auto;
+  width:80%;
+  height:10px;
+}
+
+.card-special-container {
+  color:white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   backface-visibility: hidden;
   position: absolute;
   left:10%;
   bottom: 5px;
-  font-size: xx-small;
+  padding-top: 5px;
+  font-size: 6px;
   margin: auto;
   width:80%;
   height:30px;
@@ -448,11 +489,43 @@ position: inherit;
   font-size: 60px;
   display: none;
   position: absolute;
-  top:44%;
+  top:42%;
   left: 42%;
   transition: transform .3s ease;
   animation-name: zoomIn;
-  animation-duration: 3s;
+  animation-duration: 3.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
+  animation-timing-function:ease-in-out;
+}
+
+#you-win {
+  z-index: 2;
+  display: none;
+  position: absolute;
+  top:30%;
+  left:36%;
+  width:400px;
+  height:400px;
+  transition: transform .3s ease;
+  animation-name: win;
+  animation-duration:1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
+  animation-timing-function:ease-in-out;
+}
+
+#you-lose {
+  z-index: 2;
+  display: none;
+  position: absolute;
+  top:30%;
+  left:36%;
+  width:400px;
+  height:400px;
+  transition: transform .3s ease;
+  animation-name: win;
+  animation-duration:1s;
   animation-iteration-count: 1;
   animation-fill-mode: backwards;
   animation-timing-function:ease-in-out;
@@ -464,11 +537,11 @@ position: inherit;
   font-size: 60px;
   display: none;
   position: absolute;
-  top:45%;
+  top:42%;
   left: 33%;
   transition: transform .3s ease;
   animation-name: zoomIn;
-  animation-duration: 3s;
+  animation-duration: 3.5s;
   animation-iteration-count: 1;
   animation-fill-mode: backwards;
   animation-timing-function:ease-in-out;
@@ -483,17 +556,30 @@ position: inherit;
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
 }
 
-.first-turn-scale {
+@keyframes win {
+  from {
+    opacity: 0;
+    transform: scale3d(.5, .5, .5);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.card-scale {
   transition: transform .3s ease;
-  z-index: 1;
-  margin-top: -35%;
-  margin-right: auto;
-  margin-left: auto;
+  z-index: 2;
   transform: scale(2);
 }
 
@@ -514,10 +600,10 @@ position: inherit;
   z-index: 2;
   display: none;
   position: absolute;
-  top:36%;
-  left:47.5%;
-  width:100px;
-  height:100px;
+  top:32%;
+  left:43%;
+  width:200px;
+  height:200px;
   transition: transform .3s ease;
   animation-name: boom;
   animation-duration:1s;
@@ -530,10 +616,10 @@ position: inherit;
   z-index: 2;
   display: none;
   position: absolute;
-  top:48%;
-  left:47.5%;
-  width:100px;
-  height:100px;
+  top:40%;
+  left:43%;
+  width:200px;
+  height:200px;
   transition: transform .3s ease;
   animation-name: boom;
   animation-duration:1s;
@@ -591,7 +677,7 @@ position: inherit;
 .p2-attack {
   transform-style:preserve-3d;
   transition: transform .5s ease;
-  animation-name: p1Attack;
+  animation-name: p2Attack;
   animation-duration: .2s;
   animation-iteration-count: 1;
   animation-fill-mode: backwards;
@@ -603,16 +689,16 @@ position: inherit;
             transform: translateY(0);
   }
   100% {
-            transform: translateY(-70px);
+            transform: translateY(-50px);
   }
 }
 
-@keyframes p1Attack {
+@keyframes p2Attack {
   0% {
             transform: translateY(0);
   }
   100% {
-            transform: translateY(25px);
+            transform: translateY(50px);
   }
 }
 
@@ -633,9 +719,9 @@ position: inherit;
 
 
 
-/*.flipped {
-   transform: rotate3d(0, 1, 0, 180deg);
-}*/
+// .flipped {
+//    transform: rotate3d(0, 1, 0, 180deg);
+// }
 
 @keyframes rotate3d {
   0% {

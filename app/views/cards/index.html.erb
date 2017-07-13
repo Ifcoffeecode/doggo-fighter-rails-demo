@@ -1,7 +1,7 @@
+<%= link_to "Back", menu_path , class: "btn btn-warning login-btn pull-right" %>
 <div id="cards-page">
   <h1 id='card-list-title'>Card List</h1>
   <div class="container" id="card-list-container">
-    <%= link_to "Back", menu_path , class: "btn btn-warning login-btn pull-right" %>
     <div id="card-list">
     </div>
   </div>
@@ -25,35 +25,44 @@ function createList(){
     let newCardImgContainer = document.createElement("div");
     let newCardImg = document.createElement("IMG");
     let newCardFront = document.createElement("div");
-    let newCardSpecial = document.createElement("p");
+    let newCardSpecialContainer = document.createElement("p");
+    let newCardSpecial = document.createTextNode(`${card.special}`);
     let newCardAtkAndHpBox = document.createElement("p");
     let newCardAtkBox = document.createElement("span");
     let newCardAtkBoxSeparator = document.createTextNode('/');
     let newCardHpBox = document.createElement("span");
     let atkBoxAttack = document.createTextNode(`${card.attack}`);
     let atkBoxHealth = document.createTextNode(`${card.health}`);
+    let newCardNameContainer = document.createElement("p");
+    let newCardName = document.createTextNode(`${card.name}`);
     //add Id and/or className to elements
     newCard.setAttribute("id", "");
-    newCard.className = "card-front enlarge p1-hcard pull-right";
+    newCard.className = "card-front enlarge pull-right";
     newCardImgContainer.className = "card-img-holder";
     newCardImg.className = "card-img";
     newCardImg.setAttribute("src", card.image);
     newCardFront.className = "card-front-background";
+    newCardSpecialContainer.className = "card-special-container";
     newCardSpecial.className = "card-special";
     newCardAtkAndHpBox.className = "atk-hp-box";
     newCardAtkBox.className = "atk-box";
     newCardHpBox.className = "hp-box";
+    newCardNameContainer.className = "card-name-container";
+    newCardName.className = "card-name";
     // append elements to eachother
     newCard.append(newCardImgContainer);
     newCardImgContainer.append(newCardImg);
     newCard.append(newCardFront);
-    newCardFront.append(newCardSpecial);
-    newCardSpecial.append(newCardAtkAndHpBox);
+    newCardFront.append(newCardSpecialContainer);
+    newCardSpecialContainer.append(newCardSpecial);
+    newCardSpecialContainer.append(newCardAtkAndHpBox);
     newCardAtkAndHpBox.append(newCardAtkBox);
     newCardAtkBox.append(atkBoxAttack);
     newCardAtkAndHpBox.append(newCardAtkBoxSeparator);
     newCardAtkAndHpBox.append(newCardHpBox);
     newCardHpBox.append(atkBoxHealth);
+    newCardFront.append(newCardNameContainer);
+    newCardNameContainer.append(newCardName);
     //put card in the list
     newCard.style.margin = "10px";
 
