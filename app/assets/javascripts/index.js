@@ -23,7 +23,7 @@ let p2AtkCounter = 0;
 //=======================================================================================
 
 function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
+  let currentIndex = array.length, temporaryValue, randomIndex;
   while (0 !== currentIndex) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
@@ -258,7 +258,7 @@ function yourTurnPopUp () {
         opponentTurn.style.display = 'none';
       }, 2500);
     }
-  },1000)
+  },500)
 }
 
 //=====================================DRAG DROP=========================================
@@ -492,84 +492,86 @@ function firstTurnPutActiveCardInPlay () {
   },2000)
 }
 
-function putActiveCardInPlay(){
-  let p2ActiveCardNode = document.getElementById('p2-active-card');
-  let randomNum = Math.floor((Math.random() * p2HandArr.length - 1) + 1);
+function putActiveCardInPlay () {
+  const p2ActiveCardNode = document.getElementById('p2-active-card');
+  const randomNum = Math.floor((Math.random() * p2HandArr.length - 1) + 1);
 
   if(p2Turn === true && p2ActiveCardInPlay === undefined) {
     if (p2BenchArr.length === 0 && isDoggoCardType(p2HandArr[randomNum]) === true) {
       let removeCardFromHand = p2HandArr.splice(randomNum,1);
       p2ActiveCardInPlay = removeCardFromHand.shift();
       p2ActiveCardNode.appendChild(document.getElementById(p2ActiveCardInPlay.cardId));
-      setTimeout(function(){
+      setTimeout(function () {
         putCardsOnBench();
-      },2000);
+      }, 2000);
     } else if (p2BenchArr.length > 0 && p2ActiveCardInPlay === undefined) {
-      let randomBenchNum = Math.floor((Math.random() * p2BenchArr.length - 1) + 1);
+      const randomBenchNum = Math.floor((Math.random() * p2BenchArr.length - 1) + 1);
       let removeCardFromBench = p2BenchArr.splice(randomBenchNum,1);
       p2ActiveCardInPlay = removeCardFromBench.shift();
       p2ActiveCardNode.appendChild(document.getElementById(p2ActiveCardInPlay.cardId));
-      console.log("attacking 2");
-      setTimeout(function(){
+      setTimeout(function () {
         p2Attack();
-      },2000);
-    } else if(p2BenchArr.length === 0 && isUseCardType(p2HandArr[randomNum]) === true && p2ActiveCardInPlay === undefined){
+      }, 2000);
+    } else if(
+      p2BenchArr.length === 0
+      && isUseCardType(p2HandArr[randomNum]) === true
+      && p2ActiveCardInPlay === undefined
+    ){
       putActiveCardInPlay();
     }
   }  else if(p2BenchArr.length >= 1 && p2ActiveCardInPlay !== undefined){
-    console.log("attacking 3");
-    setTimeout(function(){
+    setTimeout(function () {
       p2Attack();
-    },2000);
+    }, 2000);
   } else if(p2BenchArr.length === 0){
     putCardsOnBench();
   }
 }
 
-  function putCardsOnBench () {
-    let newBenchCardToPlace;
-    let p2BenchNode;
-    if(p2Turn === true && p2ActiveCardInPlay !== undefined && p2BenchArr.length === 0){
-      let randomNumBench = Math.floor((Math.random() * 3) + 2);
-      let i = 0;
-      let benchPlacement = setInterval(function(){
-        i += 1;
-        if(p2HandArr === []){
-          setTimeout(function(){
-            p2Attack();
-          }, 1500);
-          clearInterval(benchPlacement);
-        } else if( i >= randomNumBench){
-          setTimeout(function(){
-            p2Attack();
-          }, 1500);
-          clearInterval(benchPlacement);
-        } else {
-          newBenchCardToPlace = document.getElementById(p2HandArr[0].cardId);
-          let removeCard = p2HandArr.shift();
-          p2BenchArr.push(removeCard);
-          if(  i === 1 && p2HandArr !== [] && document.getElementById(`p2-bench-2`).hasChildNodes() === false){
-            p2BenchNode = document.getElementById(`p2-bench-2`);
-            p2BenchNode.appendChild(newBenchCardToPlace);
-          } else if( i === 2 && p2HandArr !== [] && document.getElementById(`p2-bench-2`).hasChildNodes() === false){
-            p2BenchNode = document.getElementById(`p2-bench-3`);
-            p2BenchNode.appendChild(newBenchCardToPlace);
-          } else if( i === 3 && p2HandArr !== [] && document.getElementById(`p2-bench-2`).hasChildNodes() === false){
-            p2BenchNode = document.getElementById(`p2-bench-1`);
-            p2BenchNode.appendChild(newBenchCardToPlace);
-          } else if( i === 3 && p2HandArr !== [] && document.getElementById(`p2-bench-2`).hasChildNodes() === false){
-            p2BenchNode = document.getElementById(`p2-bench-4`);
-            p2BenchNode.appendChild(newBenchCardToPlace);
-          }
+function putCardsOnBench () {
+  let newBenchCardToPlace;
+  let p2BenchNode;
+  if(p2Turn === true && p2ActiveCardInPlay !== undefined && p2BenchArr.length === 0){
+    let randomNumBench = Math.floor((Math.random() * 3) + 2);
+    let i = 0;
+    let benchPlacement = setInterval(function(){
+      i += 1;
+      if(p2HandArr === []){
+        setTimeout(function(){
+          p2Attack();
+        }, 1500);
+        clearInterval(benchPlacement);
+      } else if( i >= randomNumBench){
+        setTimeout(function(){
+          p2Attack();
+        }, 1500);
+        clearInterval(benchPlacement);
+      } else {
+        newBenchCardToPlace = document.getElementById(p2HandArr[0].cardId);
+        let removeCard = p2HandArr.shift();
+        p2BenchArr.push(removeCard);
+        if(  i === 1 && p2HandArr !== [] && document.getElementById(`p2-bench-2`).hasChildNodes() === false){
+          p2BenchNode = document.getElementById(`p2-bench-2`);
+          p2BenchNode.appendChild(newBenchCardToPlace);
+        } else if( i === 2 && p2HandArr !== [] && document.getElementById(`p2-bench-3`).hasChildNodes() === false){
+          p2BenchNode = document.getElementById(`p2-bench-3`);
+          p2BenchNode.appendChild(newBenchCardToPlace);
+        } else if( i === 3 && p2HandArr !== [] && document.getElementById(`p2-bench-1`).hasChildNodes() === false){
+          p2BenchNode = document.getElementById(`p2-bench-1`);
+          p2BenchNode.appendChild(newBenchCardToPlace);
+        } else if( i === 3 && p2HandArr !== [] && document.getElementById(`p2-bench-4`).hasChildNodes() === false){
+          p2BenchNode = document.getElementById(`p2-bench-4`);
+          p2BenchNode.appendChild(newBenchCardToPlace);
         }
-    },1500);
-  } else {
-    console.log('attacking 4')
-      setTimeout(function(){
-        p2Attack();
-      },2000)
-    }
+      }
+  },1500);
+} else {
+  console.log('attacking 4')
+    setTimeout(function(){
+      p2Attack();
+    },2000)
   }
+}
 
 //===========================P2 A.I. - ATTACK/SPECIAL/ENDTURN============================
 //=======================================================================================

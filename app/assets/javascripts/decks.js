@@ -348,7 +348,7 @@ let p1Deck = [
   cardId: "trump",
   attack: 3,
   health: 6,
-  special: "Specail: Tweet",
+  special: "Special: Tweet",
   cardType: "doggo",
   image:"trump.jpg"
 },
@@ -744,7 +744,7 @@ let p1Deck = [
    cardId: "trump2",
    attack: 3,
    health: 6,
-   special: "Specail: Tweet",
+   special: "Special: Tweet",
    cardType: "doggo",
    image:"trump.jpg"
  },
