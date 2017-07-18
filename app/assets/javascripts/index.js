@@ -43,25 +43,25 @@ let drawnCardId;
 
 function drawCard() {
   if(p1Turn === true && gameEnd !== true) {
-    let drawnCard = p1Deck.pop();
+    const drawnCard = p1Deck.pop();
     p1HandArr.push(drawnCard);
     drawnCardId = drawnCard;
     //create elements
-    let newCard = document.createElement("li");
-    let newCardImgContainer = document.createElement("div");
-    let newCardImg = document.createElement("IMG");
-    let newCardFront = document.createElement("div");
-    let newCardBack = document.createElement("div");
-    let newCardNameContainer = document.createElement("p");
-    let newCardName = document.createTextNode(`${drawnCard.name}`);
-    let newCardSpecialContainer = document.createElement("p");
-    let newCardSpecial = document.createTextNode(`${drawnCard.special}`);
-    let newCardAtkAndHpBox = document.createElement("p");
-    let newCardAtkBox = document.createElement("span");
-    let newCardAtkBoxSeparator = document.createTextNode('/');
-    let newCardHpBox = document.createElement("span");
-    let atkBoxAttack = document.createTextNode(`${drawnCard.attack}`);
-    let atkBoxHealth = document.createTextNode(`${drawnCard.health}`);
+    const newCard = document.createElement("li");
+    const newCardImgContainer = document.createElement("div");
+    const newCardImg = document.createElement("IMG");
+    const newCardFront = document.createElement("div");
+    const newCardBack = document.createElement("div");
+    const newCardNameContainer = document.createElement("p");
+    const newCardName = document.createTextNode(`${drawnCard.name}`);
+    const newCardSpecialContainer = document.createElement("p");
+    const newCardSpecial = document.createTextNode(`${drawnCard.special}`);
+    const newCardAtkAndHpBox = document.createElement("p");
+    const newCardAtkBox = document.createElement("span");
+    const newCardAtkBoxSeparator = document.createTextNode('/');
+    const newCardHpBox = document.createElement("span");
+    const atkBoxAttack = document.createTextNode(`${drawnCard.attack}`);
+    const atkBoxHealth = document.createTextNode(`${drawnCard.health}`);
     //add Id and/or className to elements
     newCard.setAttribute("id", "p1-new-card");
     newCard.className = "card-front flipCard p1-hcard";
@@ -96,25 +96,25 @@ function drawCard() {
       placeInHand();
     },1000);
   } else if (p2Turn === true && gameEnd !== true) {
-    let drawnCard = p2Deck.pop();
+    const drawnCard = p2Deck.pop();
     p2HandArr.push(drawnCard);
     drawnCardId = drawnCard;
     //create elements
-    let newCard = document.createElement("li");
-    let newCardImgContainer = document.createElement("div");
-    let newCardImg = document.createElement("IMG");
-    let newCardFront = document.createElement("div");
-    let newCardBack = document.createElement("div");
-    let newCardNameContainer = document.createElement("p");
-    let newCardName = document.createTextNode(`${drawnCard.name}`);
-    let newCardSpecialContainer = document.createElement("p");
-    let newCardSpecial = document.createTextNode(`${drawnCard.special}`);
-    let newCardAtkAndHpBox = document.createElement("p");
-    let newCardAtkBox = document.createElement("span");
-    let newCardAtkBoxSeparator = document.createTextNode('/');
-    let newCardHpBox = document.createElement("span");
-    let atkBoxAttack = document.createTextNode(`${drawnCard.attack}`);
-    let atkBoxHealth = document.createTextNode(`${drawnCard.health}`);
+    const newCard = document.createElement("li");
+    const newCardImgContainer = document.createElement("div");
+    const newCardImg = document.createElement("IMG");
+    const newCardFront = document.createElement("div");
+    const newCardBack = document.createElement("div");
+    const newCardNameContainer = document.createElement("p");
+    const newCardName = document.createTextNode(`${drawnCard.name}`);
+    const newCardSpecialContainer = document.createElement("p");
+    const newCardSpecial = document.createTextNode(`${drawnCard.special}`);
+    const newCardAtkAndHpBox = document.createElement("p");
+    const newCardAtkBox = document.createElement("span");
+    const newCardAtkBoxSeparator = document.createTextNode('/');
+    const newCardHpBox = document.createElement("span");
+    const atkBoxAttack = document.createTextNode(`${drawnCard.attack}`);
+    const atkBoxHealth = document.createTextNode(`${drawnCard.health}`);
     //add Id and/or className to elements
     newCard.setAttribute("id", "p2-new-card");
     newCard.className = "card-front flipCard p2-hcard";
@@ -155,10 +155,10 @@ function drawCard() {
 //=======================================================================================
 
 function placeInHand () {
-  let p1NewCard = document.getElementById('p1-new-card');
-  let p1Hand = document.getElementById('p1-hand');
-  let p2NewCard = document.getElementById('p2-new-card');
-  let p2Hand = document.getElementById('p2-hand');
+  const p1NewCard = document.getElementById('p1-new-card');
+  const p1Hand = document.getElementById('p1-hand');
+  const p2NewCard = document.getElementById('p2-new-card');
+  const p2Hand = document.getElementById('p2-hand');
 
     if (firstTurn === true && p1Turn === true) {
       p1NewCard.setAttribute("draggable","true");
@@ -240,9 +240,9 @@ function fadeIn(element, display){
 
 function yourTurnPopUp () {
   console.log("your turn is being run");
-  let turn = document.getElementById('your-turn');
-  let opponentTurn = document.getElementById('opponent-turn');
-  let p1Buttons = document.querySelector('#p1-buttons-container');
+  const turn = document.getElementById('your-turn');
+  const opponentTurn = document.getElementById('opponent-turn');
+  const p1Buttons = document.querySelector('#p1-buttons-container');
   setTimeout(function(){
     if(p1Turn === true && gameEnd !== true) {
       p2AtkCounter = 0;
@@ -332,10 +332,10 @@ function drop(event) {
 //==========================================================================================
 
 function firstTurnDraw () {
-  let p1Buttons = document.querySelector('#p1-buttons-container');
+  const p1Buttons = document.querySelector('#p1-buttons-container');
   if (p1Turn === true) {
     let setIntCounter = 0;
-    let firstTurnInt = setInterval(function(){
+    const firstTurnInt = setInterval(function(){
       if(setIntCounter === 5){
         clearInterval(firstTurnInt);
       } else {
@@ -345,7 +345,7 @@ function firstTurnDraw () {
     }, 1150);
   } else if (p2Turn === true) {
     let setIntCounter = 0;
-    let firstTurnInt = setInterval(function(){
+    const firstTurnInt = setInterval(function(){
       if(setIntCounter === 5){
         clearInterval(firstTurnInt);
         setTimeout(function(){
@@ -365,8 +365,8 @@ function firstTurnDraw () {
 
 function attack () {
   if(setUp === true){
-    let speechBubble = document.getElementById('speech-bubble');
-    let speechBubbleContainer = document.getElementById('speech-bubble-container');
+    const speechBubble = document.getElementById('speech-bubble');
+    const speechBubbleContainer = document.getElementById('speech-bubble-container');
     speechBubbleContainer.style.display = "block";
     bubbleText = "You cannot attack during the setup round.";
     speechBubble.innerHTML = bubbleText;
@@ -377,8 +377,8 @@ function attack () {
     document.getElementById(p1ActiveCardInPlay.cardId).className += " p1-attack";
     document.getElementById('p1-explosion').style.display = "inherit";
     setTimeout(function(){
-      let newHp = (p2ActiveCardInPlay.health = (p2ActiveCardInPlay.health - p1ActiveCardInPlay.attack));
-      let target = document.getElementById('p2-active-card').getElementsByTagName("span")[1]
+      const newHp = (p2ActiveCardInPlay.health = (p2ActiveCardInPlay.health - p1ActiveCardInPlay.attack));
+      const target = document.getElementById('p2-active-card').getElementsByTagName("span")[1]
       target.innerHTML = newHp;
       document.getElementById('p1-explosion').style.display = "none";
       document.getElementById(p1ActiveCardInPlay.cardId).classList.remove("p1-attack");
@@ -394,8 +394,8 @@ function attack () {
       endTurn();
     },500);
   } else if(p1Turn === true && p1ActiveCardInPlay === undefined) {
-    let speechBubble = document.getElementById('speech-bubble');
-    let speechBubbleContainer = document.getElementById('speech-bubble-container');
+    const speechBubble = document.getElementById('speech-bubble');
+    const speechBubbleContainer = document.getElementById('speech-bubble-container');
     speechBubbleContainer.style.display = "block";
     bubbleText = "You must have an active doggo to attack.";
     speechBubble.innerHTML = bubbleText;
@@ -406,8 +406,8 @@ function attack () {
 }
 
 function specialAttack () {
-  let speechBubble = document.getElementById('speech-bubble');
-  let speechBubbleContainer = document.getElementById('speech-bubble-container');
+  const speechBubble = document.getElementById('speech-bubble');
+  const speechBubbleContainer = document.getElementById('speech-bubble-container');
   speechBubbleContainer.style.display = "block";
   bubbleText = "Your doggo is not ready to use its special attack.";
   speechBubble.innerHTML = bubbleText;
@@ -419,8 +419,8 @@ function specialAttack () {
 function endTurn () {
   endGame();
   if (p1ActiveCardInPlay === undefined && endGame !== true) {
-    let speechBubble = document.getElementById('speech-bubble');
-    let speechBubbleContainer = document.getElementById('speech-bubble-container');
+    const speechBubble = document.getElementById('speech-bubble');
+    const speechBubbleContainer = document.getElementById('speech-bubble-container');
     speechBubbleContainer.style.display = "block";
     bubbleText = "You must have an active doggo before you can end your turn.";
     speechBubble.innerHTML = bubbleText;
@@ -498,7 +498,7 @@ function putActiveCardInPlay () {
 
   if(p2Turn === true && p2ActiveCardInPlay === undefined) {
     if (p2BenchArr.length === 0 && isDoggoCardType(p2HandArr[randomNum]) === true) {
-      let removeCardFromHand = p2HandArr.splice(randomNum,1);
+      const removeCardFromHand = p2HandArr.splice(randomNum,1);
       p2ActiveCardInPlay = removeCardFromHand.shift();
       p2ActiveCardNode.appendChild(document.getElementById(p2ActiveCardInPlay.cardId));
       setTimeout(function () {
@@ -506,7 +506,7 @@ function putActiveCardInPlay () {
       }, 2000);
     } else if (p2BenchArr.length > 0 && p2ActiveCardInPlay === undefined) {
       const randomBenchNum = Math.floor((Math.random() * p2BenchArr.length - 1) + 1);
-      let removeCardFromBench = p2BenchArr.splice(randomBenchNum,1);
+      const removeCardFromBench = p2BenchArr.splice(randomBenchNum,1);
       p2ActiveCardInPlay = removeCardFromBench.shift();
       p2ActiveCardNode.appendChild(document.getElementById(p2ActiveCardInPlay.cardId));
       setTimeout(function () {
@@ -531,13 +531,13 @@ function putActiveCardInPlay () {
 function putCardsOnBench () {
   let newBenchCardToPlace;
   let p2BenchNode;
-  if(p2Turn === true && p2ActiveCardInPlay !== undefined && p2BenchArr.length === 0){
-    let randomNumBench = Math.floor((Math.random() * 3) + 2);
+  if( p2Turn === true && p2ActiveCardInPlay !== undefined && p2BenchArr.length === 0 ) {
+    const randomNumBench = Math.floor((Math.random() * 3) + 2);
     let i = 0;
-    let benchPlacement = setInterval(function(){
+    const benchPlacement = setInterval(function(){
       i += 1;
-      if(p2HandArr === []){
-        setTimeout(function(){
+      if ( p2HandArr === [] ) {
+        setTimeout( function () {
           p2Attack();
         }, 1500);
         clearInterval(benchPlacement);
@@ -548,18 +548,18 @@ function putCardsOnBench () {
         clearInterval(benchPlacement);
       } else {
         newBenchCardToPlace = document.getElementById(p2HandArr[0].cardId);
-        let removeCard = p2HandArr.shift();
+        const removeCard = p2HandArr.shift();
         p2BenchArr.push(removeCard);
-        if(  i === 1 && p2HandArr !== [] && document.getElementById(`p2-bench-2`).hasChildNodes() === false){
+        if ( i === 1 && p2HandArr !== [] && document.getElementById(`p2-bench-2`).hasChildNodes() === false ) {
           p2BenchNode = document.getElementById(`p2-bench-2`);
           p2BenchNode.appendChild(newBenchCardToPlace);
-        } else if( i === 2 && p2HandArr !== [] && document.getElementById(`p2-bench-3`).hasChildNodes() === false){
+        } else if ( i === 2 && p2HandArr !== [] && document.getElementById(`p2-bench-3`).hasChildNodes() === false ) {
           p2BenchNode = document.getElementById(`p2-bench-3`);
           p2BenchNode.appendChild(newBenchCardToPlace);
-        } else if( i === 3 && p2HandArr !== [] && document.getElementById(`p2-bench-1`).hasChildNodes() === false){
+        } else if ( i === 3 && p2HandArr !== [] && document.getElementById(`p2-bench-1`).hasChildNodes() === false ) {
           p2BenchNode = document.getElementById(`p2-bench-1`);
           p2BenchNode.appendChild(newBenchCardToPlace);
-        } else if( i === 3 && p2HandArr !== [] && document.getElementById(`p2-bench-4`).hasChildNodes() === false){
+        } else if ( i === 3 && p2HandArr !== [] && document.getElementById(`p2-bench-4`).hasChildNodes() === false ) {
           p2BenchNode = document.getElementById(`p2-bench-4`);
           p2BenchNode.appendChild(newBenchCardToPlace);
         }
@@ -579,15 +579,14 @@ function putCardsOnBench () {
 function p2Attack () {
   if(setUp === true){
     p2EndTurn();
-  } else if(p2Turn === true && p2ActiveCardInPlay !== undefined && p1ActiveCardInPlay !== undefined && p2AtkCounter === 0) {
-    p2AtkCounter += 1
-    console.log('p2Attacking')
+  } else if( p2Turn === true && p2ActiveCardInPlay !== undefined && p1ActiveCardInPlay !== undefined && p2AtkCounter === 0 ) {
+    p2AtkCounter += 1;
     document.getElementById(p2ActiveCardInPlay.cardId).className += " p2-attack";
     document.getElementById('p2-explosion').style.display = "inherit";
     setTimeout(function(){
       document.getElementById('p2-explosion').style.display = "none";
-      let newHp = (p1ActiveCardInPlay.health = (p1ActiveCardInPlay.health - p2ActiveCardInPlay.attack));
-      let target = document.getElementById('p1-active-card').getElementsByTagName("span")[1]
+      const newHp = (p1ActiveCardInPlay.health = (p1ActiveCardInPlay.health - p2ActiveCardInPlay.attack));
+      const target = document.getElementById('p1-active-card').getElementsByTagName("span")[1]
       target.innerHTML = newHp;
       document.getElementById('p2-explosion').style.display = "none";
       document.getElementById(p2ActiveCardInPlay.cardId).classList.remove("p2-attack");
@@ -653,7 +652,7 @@ function p2EndTurn () {
 //=======================================================================================
 
 function killCard(card) {
-    let deadCard = document.getElementById(card.cardId);
+    const deadCard = document.getElementById(card.cardId);
     deadCard.className += " death";
     setTimeout(function(){
       deadCard.remove();
@@ -694,7 +693,7 @@ function endSetUpState(){
 function tailsSelected() {
   tails = true;
   heads = false;
-  let ht = document.getElementById('heads-or-tails');
+  const ht = document.getElementById('heads-or-tails');
   fadeOut(ht);
   chooseWhoGoesFirst();
 }
@@ -702,7 +701,7 @@ function tailsSelected() {
 function headsSelected() {
   heads = true;
   tails = false;
-  let ht = document.getElementById('heads-or-tails');
+  const ht = document.getElementById('heads-or-tails');
   fadeOut(ht);
   chooseWhoGoesFirst();
 }
@@ -710,8 +709,8 @@ function headsSelected() {
 function chooseWhoGoesFirst() {
   if(gameStart === true){
     gameStart = false;
-    let coinContainer = document.getElementById('coin-container');
-    let coin = document.getElementById('coin-img');
+    const coinContainer = document.getElementById('coin-container');
+    const coin = document.getElementById('coin-img');
     fadeIn(coinContainer);
     var flipCoin = Math.floor((Math.random() * 2) + 1);
     if(flipCoin === 2){
