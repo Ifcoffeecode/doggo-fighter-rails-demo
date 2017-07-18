@@ -18,13 +18,16 @@ let tails = false;
 let gameEnd = false;
 let p2AtkCounter = 0;
 
+function getId(id){ return document.getElementById(id); }; //get ID
+function cE(tag){ return document.createElement(tag); }; //create element
+function cTN(text){return document.createTextNode(text); }; //create text node
 
 //=====================================SHUFFLE DECK======================================
 //=======================================================================================
 
-function shuffle(array) {
+function shuffle(array){
   let currentIndex = array.length, temporaryValue, randomIndex;
-  while (0 !== currentIndex) {
+  while (0 !== currentIndex){
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
     temporaryValue = array[currentIndex];
@@ -41,27 +44,27 @@ p2Deck = shuffle(p2Deck);
 //==========================================================================================
 let drawnCardId;
 
-function drawCard() {
-  if(p1Turn === true && gameEnd !== true) {
+function drawCard (){
+  if(p1Turn === true && gameEnd !== true){
     const drawnCard = p1Deck.pop();
     p1HandArr.push(drawnCard);
     drawnCardId = drawnCard;
     //create elements
-    const newCard = document.createElement("li");
-    const newCardImgContainer = document.createElement("div");
-    const newCardImg = document.createElement("IMG");
-    const newCardFront = document.createElement("div");
-    const newCardBack = document.createElement("div");
-    const newCardNameContainer = document.createElement("p");
-    const newCardName = document.createTextNode(`${drawnCard.name}`);
-    const newCardSpecialContainer = document.createElement("p");
-    const newCardSpecial = document.createTextNode(`${drawnCard.special}`);
-    const newCardAtkAndHpBox = document.createElement("p");
-    const newCardAtkBox = document.createElement("span");
-    const newCardAtkBoxSeparator = document.createTextNode('/');
-    const newCardHpBox = document.createElement("span");
-    const atkBoxAttack = document.createTextNode(`${drawnCard.attack}`);
-    const atkBoxHealth = document.createTextNode(`${drawnCard.health}`);
+    const newCard = cE("li");
+    const newCardImgContainer = cE("div");
+    const newCardImg = cE("IMG");
+    const newCardFront = cE("div");
+    const newCardBack = cE("div");
+    const newCardNameContainer = cE("p");
+    const newCardName = cTN(`${drawnCard.name}`);
+    const newCardSpecialContainer = cE("p");
+    const newCardSpecial = cTN(`${drawnCard.special}`);
+    const newCardAtkAndHpBox = cE("p");
+    const newCardAtkBox = cE("span");
+    const newCardAtkBoxSeparator = cTN('/');
+    const newCardHpBox = cE("span");
+    const atkBoxAttack = cTN(`${drawnCard.attack}`);
+    const atkBoxHealth = cTN(`${drawnCard.health}`);
     //add Id and/or className to elements
     newCard.setAttribute("id", "p1-new-card");
     newCard.className = "card-front flipCard p1-hcard";
@@ -91,30 +94,30 @@ function drawCard() {
     newCardAtkAndHpBox.append(newCardAtkBoxSeparator);
     newCardAtkAndHpBox.append(newCardHpBox);
     newCardHpBox.append(atkBoxHealth);
-    document.getElementById('p1-add-new-card').appendChild(newCard);
-    setTimeout(function(){
+    getId('p1-add-new-card').appendChild(newCard);
+    setTimeout( function(){
       placeInHand();
     },1000);
-  } else if (p2Turn === true && gameEnd !== true) {
+  } else if (p2Turn === true && gameEnd !== true){
     const drawnCard = p2Deck.pop();
     p2HandArr.push(drawnCard);
     drawnCardId = drawnCard;
     //create elements
-    const newCard = document.createElement("li");
-    const newCardImgContainer = document.createElement("div");
-    const newCardImg = document.createElement("IMG");
-    const newCardFront = document.createElement("div");
-    const newCardBack = document.createElement("div");
-    const newCardNameContainer = document.createElement("p");
-    const newCardName = document.createTextNode(`${drawnCard.name}`);
-    const newCardSpecialContainer = document.createElement("p");
-    const newCardSpecial = document.createTextNode(`${drawnCard.special}`);
-    const newCardAtkAndHpBox = document.createElement("p");
-    const newCardAtkBox = document.createElement("span");
-    const newCardAtkBoxSeparator = document.createTextNode('/');
-    const newCardHpBox = document.createElement("span");
-    const atkBoxAttack = document.createTextNode(`${drawnCard.attack}`);
-    const atkBoxHealth = document.createTextNode(`${drawnCard.health}`);
+    const newCard = cE("li");
+    const newCardImgContainer = cE("div");
+    const newCardImg = cE("IMG");
+    const newCardFront = cE("div");
+    const newCardBack = cE("div");
+    const newCardNameContainer = cE("p");
+    const newCardName = cTN(`${drawnCard.name}`);
+    const newCardSpecialContainer = cE("p");
+    const newCardSpecial = cTN(`${drawnCard.special}`);
+    const newCardAtkAndHpBox = cE("p");
+    const newCardAtkBox = cE("span");
+    const newCardAtkBoxSeparator = cTN('/');
+    const newCardHpBox = cE("span");
+    const atkBoxAttack = cTN(`${drawnCard.attack}`);
+    const atkBoxHealth = cTN(`${drawnCard.health}`);
     //add Id and/or className to elements
     newCard.setAttribute("id", "p2-new-card");
     newCard.className = "card-front flipCard p2-hcard";
@@ -144,8 +147,8 @@ function drawCard() {
     newCardAtkAndHpBox.append(newCardAtkBoxSeparator);
     newCardAtkAndHpBox.append(newCardHpBox);
     newCardHpBox.append(atkBoxHealth);
-    document.getElementById('p2-add-new-card').appendChild(newCard);
-    setTimeout(function(){
+    getId('p2-add-new-card').appendChild(newCard);
+    setTimeout( function(){
       placeInHand();
     },1000);
   }
@@ -154,13 +157,13 @@ function drawCard() {
 //================================PLACE CARDS IN HAND====================================
 //=======================================================================================
 
-function placeInHand () {
-  const p1NewCard = document.getElementById('p1-new-card');
-  const p1Hand = document.getElementById('p1-hand');
-  const p2NewCard = document.getElementById('p2-new-card');
-  const p2Hand = document.getElementById('p2-hand');
+function placeInHand (){
+  const p1NewCard = getId('p1-new-card');
+  const p1Hand = getId('p1-hand');
+  const p2NewCard = getId('p2-new-card');
+  const p2Hand = getId('p2-hand');
 
-    if (firstTurn === true && p1Turn === true) {
+    if (firstTurn === true && p1Turn === true){
       p1NewCard.setAttribute("draggable","true");
       p1NewCard.setAttribute("ondragstart","drag(event)");
       // p1NewCard.className += " first-turn-scale";
@@ -169,23 +172,23 @@ function placeInHand () {
       p1NewCard.setAttribute("id", `${drawnCardId.cardId}`);
       p1Hand.appendChild(p1NewCard);
 
-      setTimeout(function(){
+      setTimeout( function(){
         // p1NewCard.classList.remove("first-turn-scale");
         p1NewCard.className += " p1-hover";
       }, 5000);
 
-    } else if (firstTurn === true && p2Turn === true) {
+    } else if (firstTurn === true && p2Turn === true){
         p2NewCard.classList.remove("flipCard");
         p2NewCard.removeAttribute("id", 'p2-new-card');
         p2NewCard.setAttribute("id", `${drawnCardId.cardId}`);
         p2Hand.appendChild(p2NewCard);
 
-        setTimeout(function(){
+        setTimeout( function(){
           p2NewCard.className += " p2-hover";
         }, 1000);
 
-  } else if (p1Turn === true && firstTurn === false) {
-    setTimeout(function(){
+  } else if (p1Turn === true && firstTurn === false){
+    setTimeout( function(){
        p1NewCard.setAttribute("draggable","true");
        p1NewCard.setAttribute("ondragstart","drag(event)");
        p1NewCard.className += " p1-hover";
@@ -194,8 +197,8 @@ function placeInHand () {
        p1NewCard.setAttribute("id", `${drawnCardId.cardId}`);
        p1Hand.appendChild(p1NewCard);
     }, 1500);
-  } else if (p2Turn === true && firstTurn === false) {
-    setTimeout(function(){
+  } else if (p2Turn === true && firstTurn === false){
+    setTimeout( function(){
        p2NewCard.classList.remove("flipCard");
        p2NewCard.removeAttribute("id", 'p2-new-card');
        p2NewCard.setAttribute("id", `${drawnCardId.cardId}`);
@@ -209,11 +212,11 @@ function placeInHand () {
 //===============================FADE IN AND FADE OUT=======================================
 //==========================================================================================
 
-function fadeOut(element){
+function fadeOut (element){
   element.style.opacity = 1;
 
-  (function fade() {
-    if ((element.style.opacity -= .1) < 0) {
+  (function fade(){
+    if ((element.style.opacity -= .1) < 0){
       element.style.display = "none";
     } else {
       requestAnimationFrame(fade);
@@ -221,13 +224,13 @@ function fadeOut(element){
   })();
 }
 
-function fadeIn(element, display){
+function fadeIn (element, display){
   element.style.display = "inline";
   element.style.opacity = 0;
 
-  (function fade() {
+  (function fade(){
     let val = parseFloat(element.style.opacity);
-    if (!((val += .1) > 1)) {
+    if (!((val += .1) > 1)){
       element.style.opacity = val;
       requestAnimationFrame(fade);
     }
@@ -238,23 +241,23 @@ function fadeIn(element, display){
 //==========================================================================================
 
 
-function yourTurnPopUp () {
+function yourTurnPopUp (){
   console.log("your turn is being run");
-  const turn = document.getElementById('your-turn');
-  const opponentTurn = document.getElementById('opponent-turn');
-  const p1Buttons = document.querySelector('#p1-buttons-container');
-  setTimeout(function(){
-    if(p1Turn === true && gameEnd !== true) {
+  const turn = getId('your-turn');
+  const opponentTurn = getId('opponent-turn');
+  const p1Buttons = getId('p1-buttons-container');
+  setTimeout( function(){
+    if(p1Turn === true && gameEnd !== true){
       p2AtkCounter = 0;
       turn.style.display = "inherit";
-      setTimeout(function(){
+      setTimeout( function(){
         turn.style.display = 'none';
         fadeIn(p1Buttons);
       }, 2500);
-    } else if(p2Turn === true && gameEnd !== true) {
+    } else if(p2Turn === true && gameEnd !== true){
       fadeOut(p1Buttons);
       opponentTurn.style.display = "inherit";
-      setTimeout(function(){
+      setTimeout( function(){
         opponentTurn.style.display = 'none';
       }, 2500);
     }
@@ -265,11 +268,11 @@ function yourTurnPopUp () {
 //=======================================================================================
 
 
-function ignoreEvent(event) {
+function ignoreEvent(event){
   event.preventDefault();
 }
 
-function drag(event) {
+function drag(event){
   event.dataTransfer.setData("text", event.target.id);
 }
 
@@ -279,49 +282,49 @@ function dragleave(event){
   }
 }
 
-function drop(event) {
+function drop(event){
   event.preventDefault();
   let data = event.dataTransfer.getData("text");
-  let draggedCard = document.getElementById(data);
+  let draggedCard = getId(data);
   console.log(data, "data");
 
-  function checkCardId(card) {
+  function checkCardId(card){
       return card.cardId === data;
   }
 
-  if(event.target.classList.contains("active-card-marker")) {
+  if(event.target.classList.contains("active-card-marker")){
     draggedCard.setAttribute("draggable", "false");
-    if(draggedCard.classList.contains("p1-hcard")) {
+    if(draggedCard.classList.contains("p1-hcard")){
       let currentActiveCard = p1HandArr.filter(checkCardId);
       let removeCard = p1HandArr.indexOf(currentActiveCard);
       p1HandArr.splice(removeCard);
       p1ActiveCardInPlay = currentActiveCard.shift();
-      event.target.appendChild(document.getElementById(data));
+      event.target.appendChild(getId(data));
       draggedCard.classList.remove("p1-hover");
       event.target.classList.remove("droppable");
-    } else if(draggedCard.classList.contains("p1-bcard")) {
+    } else if(draggedCard.classList.contains("p1-bcard")){
       let currentActiveCard = p1BenchArr.filter(checkCardId);
       let removeCard = p1BenchArr.indexOf(currentActiveCard);
       p1BenchArr.splice(removeCard);
       p1ActiveCardInPlay = currentActiveCard.shift();
-      event.target.appendChild(document.getElementById(data));
+      event.target.appendChild(getId(data));
       currentActiveCard.classList.remove("p1-hover");
       event.target.classList.remove("droppable");
     }
   } else if(p1Turn === true && event.target.classList.contains("droppable")){
     if(event.target.classList.contains("p1-bench-marker")){
-      if(draggedCard.classList.contains("p1-hcard")) {
+      if(draggedCard.classList.contains("p1-hcard")){
         let newBenchCard = p1HandArr.filter(checkCardId);
         let removeCard = p1HandArr.indexOf(newBenchCard);
         let test = p1HandArr.splice(removeCard);
         p1BenchArr.push(newBenchCard[0]);
-        event.target.appendChild(document.getElementById(data));
+        event.target.appendChild(getId(data));
         draggedCard.classList.remove("p1-hover");
         draggedCard.classList.remove("p1-hcard");
         event.target.classList.remove("droppable");
         draggedCard.className += " p1-bcard";
-      } else if(draggedCard.classList.contains("p1-bcard")) {
-          event.target.appendChild(document.getElementById(data))
+      } else if(draggedCard.classList.contains("p1-bcard")){
+          event.target.appendChild(getId(data))
         }
     }
   }
@@ -331,9 +334,9 @@ function drop(event) {
 //===============================FIRST TURN DRAW CARDS======================================
 //==========================================================================================
 
-function firstTurnDraw () {
-  const p1Buttons = document.querySelector('#p1-buttons-container');
-  if (p1Turn === true) {
+function firstTurnDraw (){
+  const p1Buttons = getId('p1-buttons-container');
+  if (p1Turn === true){
     let setIntCounter = 0;
     const firstTurnInt = setInterval(function(){
       if(setIntCounter === 5){
@@ -343,12 +346,12 @@ function firstTurnDraw () {
         setIntCounter += 1;
       }
     }, 1150);
-  } else if (p2Turn === true) {
+  } else if (p2Turn === true){
     let setIntCounter = 0;
     const firstTurnInt = setInterval(function(){
       if(setIntCounter === 5){
         clearInterval(firstTurnInt);
-        setTimeout(function(){
+        setTimeout( function(){
           firstTurnPutActiveCardInPlay();
         },1500)
       } else {
@@ -363,26 +366,26 @@ function firstTurnDraw () {
 //=======================================================================================
 
 
-function attack () {
+function attack (){
   if(setUp === true){
-    const speechBubble = document.getElementById('speech-bubble');
-    const speechBubbleContainer = document.getElementById('speech-bubble-container');
+    const speechBubble = getId('speech-bubble');
+    const speechBubbleContainer = getId('speech-bubble-container');
     speechBubbleContainer.style.display = "block";
     bubbleText = "You cannot attack during the setup round.";
     speechBubble.innerHTML = bubbleText;
-    setTimeout(function(){
+    setTimeout( function(){
       speechBubbleContainer.style.display = "none";
     }, 3000);
-  } else if(p1Turn === true && p1ActiveCardInPlay !== undefined ) {
-    document.getElementById(p1ActiveCardInPlay.cardId).className += " p1-attack";
-    document.getElementById('p1-explosion').style.display = "inherit";
-    setTimeout(function(){
+  } else if(p1Turn === true && p1ActiveCardInPlay !== undefined ){
+    getId(p1ActiveCardInPlay.cardId).className += " p1-attack";
+    getId('p1-explosion').style.display = "inherit";
+    setTimeout( function(){
       const newHp = (p2ActiveCardInPlay.health = (p2ActiveCardInPlay.health - p1ActiveCardInPlay.attack));
-      const target = document.getElementById('p2-active-card').getElementsByTagName("span")[1]
+      const target = getId('p2-active-card').getElementsByTagName("span")[1]
       target.innerHTML = newHp;
-      document.getElementById('p1-explosion').style.display = "none";
-      document.getElementById(p1ActiveCardInPlay.cardId).classList.remove("p1-attack");
-      if(p2ActiveCardInPlay.health <= 0 ) {
+      getId('p1-explosion').style.display = "none";
+      getId(p1ActiveCardInPlay.cardId).classList.remove("p1-attack");
+      if(p2ActiveCardInPlay.health <= 0 ){
         target.innerHTML = 0;
         p2DefeatedDoggoArr.push(p2ActiveCardInPlay);
         endGame();
@@ -390,70 +393,70 @@ function attack () {
         p2ActiveCardInPlay = undefined;
       }
     },1000);
-    setTimeout(function(){
+    setTimeout( function(){
       endTurn();
     },500);
-  } else if(p1Turn === true && p1ActiveCardInPlay === undefined) {
-    const speechBubble = document.getElementById('speech-bubble');
-    const speechBubbleContainer = document.getElementById('speech-bubble-container');
+  } else if(p1Turn === true && p1ActiveCardInPlay === undefined){
+    const speechBubble = getId('speech-bubble');
+    const speechBubbleContainer = getId('speech-bubble-container');
     speechBubbleContainer.style.display = "block";
     bubbleText = "You must have an active doggo to attack.";
     speechBubble.innerHTML = bubbleText;
-    setTimeout(function(){
+    setTimeout( function(){
       speechBubbleContainer.style.display = "none";
     }, 3000);
   }
 }
 
-function specialAttack () {
-  const speechBubble = document.getElementById('speech-bubble');
-  const speechBubbleContainer = document.getElementById('speech-bubble-container');
+function specialAttack (){
+  const speechBubble = getId('speech-bubble');
+  const speechBubbleContainer = getId('speech-bubble-container');
   speechBubbleContainer.style.display = "block";
   bubbleText = "Your doggo is not ready to use its special attack.";
   speechBubble.innerHTML = bubbleText;
-  setTimeout(function(){
+  setTimeout( function(){
     speechBubbleContainer.style.display = "none";
   }, 3500);
 }
 
-function endTurn () {
+function endTurn (){
   endGame();
-  if (p1ActiveCardInPlay === undefined && endGame !== true) {
-    const speechBubble = document.getElementById('speech-bubble');
-    const speechBubbleContainer = document.getElementById('speech-bubble-container');
+  if (p1ActiveCardInPlay === undefined && endGame !== true){
+    const speechBubble = getId('speech-bubble');
+    const speechBubbleContainer = getId('speech-bubble-container');
     speechBubbleContainer.style.display = "block";
     bubbleText = "You must have an active doggo before you can end your turn.";
     speechBubble.innerHTML = bubbleText;
-    setTimeout(function(){
+    setTimeout( function(){
       speechBubbleContainer.style.display = "none";
     }, 3000);
-    } else if(p1Turn === true && p1ActiveCardInPlay !== undefined && endGame !== true) {
-      if( setUp === true && setUpCounter === 0) {
+    } else if(p1Turn === true && p1ActiveCardInPlay !== undefined && endGame !== true){
+      if( setUp === true && setUpCounter === 0){
         setUpCounter += 1;
         endSetUpState();
         p2Turn = true;
         p1Turn = false;
         yourTurnPopUp();
-        setTimeout(function(){
+        setTimeout( function(){
           firstTurnDraw();
         }, 2500)
-      } else if( setUp === true && setUpCounter === 1) {
+      } else if( setUp === true && setUpCounter === 1){
           setUpCounter += 1;
           endSetUpState();
           p2Turn = true;
           p1Turn = false;
           yourTurnPopUp();
-          setTimeout(function(){
+          setTimeout( function(){
             drawCard();
           },2500)
-          setTimeout(function(){
+          setTimeout( function(){
             putActiveCardInPlay();
           },5000);
         } else {
         p1Turn = false;
         p2Turn = true;
         yourTurnPopUp();
-        setTimeout(function(){
+        setTimeout( function(){
           drawCard();
         },2500)
       }
@@ -467,7 +470,7 @@ function endTurn () {
 //===============================CHECK CARDTYPE==========================================
 //=======================================================================================
 
-function isDoggoCardType(element) {
+function isDoggoCardType(element){
   if(element.cardType === 'doggo'){
     return true;
   } else {
@@ -475,7 +478,7 @@ function isDoggoCardType(element) {
   }
 }
 
-function isUseCardType(element) {
+function isUseCardType(element){
   if(element.cardType === 'use'){
     return true;
   } else {
@@ -486,41 +489,37 @@ function isUseCardType(element) {
 //===========================P2 A.I. - PLACECARDS ON FIELD===============================
 //=======================================================================================
 
-function firstTurnPutActiveCardInPlay () {
-  setTimeout(function(){
+function firstTurnPutActiveCardInPlay (){
+  setTimeout( function(){
     putActiveCardInPlay();
   },2000)
 }
 
-function putActiveCardInPlay () {
-  const p2ActiveCardNode = document.getElementById('p2-active-card');
+function putActiveCardInPlay (){
+  const p2ActiveCardNode = getId('p2-active-card');
   const randomNum = Math.floor((Math.random() * p2HandArr.length - 1) + 1);
 
-  if(p2Turn === true && p2ActiveCardInPlay === undefined) {
-    if (p2BenchArr.length === 0 && isDoggoCardType(p2HandArr[randomNum]) === true) {
+  if(p2Turn === true && p2ActiveCardInPlay === undefined){
+    if( p2BenchArr.length === 0 && isDoggoCardType(p2HandArr[randomNum]) === true ){
       const removeCardFromHand = p2HandArr.splice(randomNum,1);
       p2ActiveCardInPlay = removeCardFromHand.shift();
-      p2ActiveCardNode.appendChild(document.getElementById(p2ActiveCardInPlay.cardId));
-      setTimeout(function () {
+      p2ActiveCardNode.appendChild(getId(p2ActiveCardInPlay.cardId));
+      setTimeout( function(){
         putCardsOnBench();
       }, 2000);
-    } else if (p2BenchArr.length > 0 && p2ActiveCardInPlay === undefined) {
+    } else if ( p2BenchArr.length > 0 && p2ActiveCardInPlay === undefined ){
       const randomBenchNum = Math.floor((Math.random() * p2BenchArr.length - 1) + 1);
       const removeCardFromBench = p2BenchArr.splice(randomBenchNum,1);
       p2ActiveCardInPlay = removeCardFromBench.shift();
-      p2ActiveCardNode.appendChild(document.getElementById(p2ActiveCardInPlay.cardId));
-      setTimeout(function () {
+      p2ActiveCardNode.appendChild(getId(p2ActiveCardInPlay.cardId));
+      setTimeout( function(){
         p2Attack();
       }, 2000);
-    } else if(
-      p2BenchArr.length === 0
-      && isUseCardType(p2HandArr[randomNum]) === true
-      && p2ActiveCardInPlay === undefined
-    ){
+    } else if ( p2BenchArr.length === 0 && isUseCardType(p2HandArr[randomNum]) === true ){
       putActiveCardInPlay();
     }
   }  else if(p2BenchArr.length >= 1 && p2ActiveCardInPlay !== undefined){
-    setTimeout(function () {
+    setTimeout( function(){
       p2Attack();
     }, 2000);
   } else if(p2BenchArr.length === 0){
@@ -528,46 +527,46 @@ function putActiveCardInPlay () {
   }
 }
 
-function putCardsOnBench () {
+function putCardsOnBench (){
   let newBenchCardToPlace;
   let p2BenchNode;
-  if( p2Turn === true && p2ActiveCardInPlay !== undefined && p2BenchArr.length === 0 ) {
+  if( p2Turn === true && p2ActiveCardInPlay !== undefined && p2BenchArr.length === 0 ){
     const randomNumBench = Math.floor((Math.random() * 3) + 2);
     let i = 0;
     const benchPlacement = setInterval(function(){
       i += 1;
-      if ( p2HandArr === [] ) {
-        setTimeout( function () {
+      if ( p2HandArr === [] ){
+        setTimeout(  function(){
           p2Attack();
         }, 1500);
         clearInterval(benchPlacement);
       } else if( i >= randomNumBench){
-        setTimeout(function(){
+        setTimeout( function(){
           p2Attack();
         }, 1500);
         clearInterval(benchPlacement);
       } else {
-        newBenchCardToPlace = document.getElementById(p2HandArr[0].cardId);
+        newBenchCardToPlace = getId(p2HandArr[0].cardId);
         const removeCard = p2HandArr.shift();
         p2BenchArr.push(removeCard);
-        if ( i === 1 && p2HandArr !== [] && document.getElementById(`p2-bench-2`).hasChildNodes() === false ) {
-          p2BenchNode = document.getElementById(`p2-bench-2`);
+        if ( i === 1 && p2HandArr !== [] && getId(`p2-bench-2`).hasChildNodes() === false ){
+          p2BenchNode = getId(`p2-bench-2`);
           p2BenchNode.appendChild(newBenchCardToPlace);
-        } else if ( i === 2 && p2HandArr !== [] && document.getElementById(`p2-bench-3`).hasChildNodes() === false ) {
-          p2BenchNode = document.getElementById(`p2-bench-3`);
+        } else if ( i === 2 && p2HandArr !== [] && getId(`p2-bench-3`).hasChildNodes() === false ){
+          p2BenchNode = getId(`p2-bench-3`);
           p2BenchNode.appendChild(newBenchCardToPlace);
-        } else if ( i === 3 && p2HandArr !== [] && document.getElementById(`p2-bench-1`).hasChildNodes() === false ) {
-          p2BenchNode = document.getElementById(`p2-bench-1`);
+        } else if ( i === 3 && p2HandArr !== [] && getId(`p2-bench-1`).hasChildNodes() === false ){
+          p2BenchNode = getId(`p2-bench-1`);
           p2BenchNode.appendChild(newBenchCardToPlace);
-        } else if ( i === 3 && p2HandArr !== [] && document.getElementById(`p2-bench-4`).hasChildNodes() === false ) {
-          p2BenchNode = document.getElementById(`p2-bench-4`);
+        } else if ( i === 3 && p2HandArr !== [] && getId(`p2-bench-4`).hasChildNodes() === false ){
+          p2BenchNode = getId(`p2-bench-4`);
           p2BenchNode.appendChild(newBenchCardToPlace);
         }
       }
   },1500);
 } else {
   console.log('attacking 4')
-    setTimeout(function(){
+    setTimeout( function(){
       p2Attack();
     },2000)
   }
@@ -576,67 +575,67 @@ function putCardsOnBench () {
 //===========================P2 A.I. - ATTACK/SPECIAL/ENDTURN============================
 //=======================================================================================
 
-function p2Attack () {
+function p2Attack (){
   if(setUp === true){
     p2EndTurn();
-  } else if( p2Turn === true && p2ActiveCardInPlay !== undefined && p1ActiveCardInPlay !== undefined && p2AtkCounter === 0 ) {
+  } else if( p2Turn === true && p2ActiveCardInPlay !== undefined && p1ActiveCardInPlay !== undefined && p2AtkCounter === 0 ){
     p2AtkCounter += 1;
-    document.getElementById(p2ActiveCardInPlay.cardId).className += " p2-attack";
-    document.getElementById('p2-explosion').style.display = "inherit";
-    setTimeout(function(){
-      document.getElementById('p2-explosion').style.display = "none";
+    getId(p2ActiveCardInPlay.cardId).className += " p2-attack";
+    getId('p2-explosion').style.display = "inherit";
+    setTimeout( function(){
+      getId('p2-explosion').style.display = "none";
       const newHp = (p1ActiveCardInPlay.health = (p1ActiveCardInPlay.health - p2ActiveCardInPlay.attack));
-      const target = document.getElementById('p1-active-card').getElementsByTagName("span")[1]
+      const target = getId('p1-active-card').getElementsByTagName("span")[1]
       target.innerHTML = newHp;
-      document.getElementById('p2-explosion').style.display = "none";
-      document.getElementById(p2ActiveCardInPlay.cardId).classList.remove("p2-attack");
-      if(p1ActiveCardInPlay.health <= 0 ) {
+      getId('p2-explosion').style.display = "none";
+      getId(p2ActiveCardInPlay.cardId).classList.remove("p2-attack");
+      if(p1ActiveCardInPlay.health <= 0 ){
         p1DefeatedDoggoArr.push(p1ActiveCardInPlay);
         endTurn();
         target.innerHTML = 0;
         killCard(p1ActiveCardInPlay);
         p1ActiveCardInPlay = undefined;
-        document.getElementById('p1-active-card').classList.add("droppable")
+        getId('p1-active-card').classList.add("droppable")
       }
     },1000);
-    setTimeout(function(){
+    setTimeout( function(){
       p2EndTurn();
     }, 1500);
   }
 }
 
 
-function p2SpecialAttack () {
+function p2SpecialAttack (){
 }
 
-function p2EndTurn () {
+function p2EndTurn (){
   endGame();
-  if (p2ActiveCardInPlay === undefined && endGame !== true) {
+  if ( p2ActiveCardInPlay === undefined && endGame !== true ){
       putActiveCardInPlay();
-    } else if(p2Turn === true && p2ActiveCardInPlay !== undefined && endGame !== true) {
-      if( setUp === true && setUpCounter === 0) {
+    } else if(p2Turn === true && p2ActiveCardInPlay !== undefined && endGame !== true){
+      if( setUp === true && setUpCounter === 0){
         setUpCounter += 1;
         endSetUpState();
         p1Turn = true;
         p2Turn = false;
         yourTurnPopUp();
-        setTimeout(function(){
+        setTimeout( function(){
           firstTurnDraw();
         },2500)
-      } else if( setUp === true && setUpCounter === 1) {
+      } else if( setUp === true && setUpCounter === 1){
           setUpCounter += 1;
           endSetUpState();
           p1Turn = true;
           p2Turn = false;
           yourTurnPopUp();
-          setTimeout(function(){
+          setTimeout( function(){
             drawCard();
           },2500)
         } else {
         p2Turn = false;
         p1Turn = true;
         yourTurnPopUp();
-        setTimeout(function(){
+        setTimeout( function(){
           drawCard();
         },2500)
       }
@@ -651,10 +650,10 @@ function p2EndTurn () {
 // IF CARDS HP <= 0 MAKE THAT CARD TURN 45 DEGREES WAIT THEN FADE OUT
 //=======================================================================================
 
-function killCard(card) {
-    const deadCard = document.getElementById(card.cardId);
+function killCard(card){
+    const deadCard = getId(card.cardId);
     deadCard.className += " death";
-    setTimeout(function(){
+    setTimeout( function(){
       deadCard.remove();
     }, 3500);
     endGame();
@@ -665,15 +664,15 @@ function endGame (){
     gameEnd = true;
     p1Turn = false;
     p2Turn = false;
-    setTimeout(function(){
-    document.getElementById('you-win').style.display = "inherit";
+    setTimeout( function(){
+    getId('you-win').style.display = "inherit";
   },1000)
   } else if(p1DefeatedDoggoArr.length === 1){
     gameEnd = true;
     p1Turn = false;
     p2Turn = false;
-    setTimeout(function(){
-    document.getElementById('you-lose').style.display = "inherit";
+    setTimeout( function(){
+    getId('you-lose').style.display = "inherit";
   },1000)
   }
 }
@@ -690,57 +689,57 @@ function endSetUpState(){
 //===========================GAME START - COIN TOSS FOR WHO GOES FIRST===================
 //=======================================================================================
 
-function tailsSelected() {
+function tailsSelected(){
   tails = true;
   heads = false;
-  const ht = document.getElementById('heads-or-tails');
+  const ht = getId('heads-or-tails');
   fadeOut(ht);
   chooseWhoGoesFirst();
 }
 
-function headsSelected() {
+function headsSelected(){
   heads = true;
   tails = false;
-  const ht = document.getElementById('heads-or-tails');
+  const ht = getId('heads-or-tails');
   fadeOut(ht);
   chooseWhoGoesFirst();
 }
 
-function chooseWhoGoesFirst() {
+function chooseWhoGoesFirst(){
   if(gameStart === true){
     gameStart = false;
-    const coinContainer = document.getElementById('coin-container');
-    const coin = document.getElementById('coin-img');
+    const coinContainer = getId('coin-container');
+    const coin = getId('coin-img');
     fadeIn(coinContainer);
     var flipCoin = Math.floor((Math.random() * 2) + 1);
     if(flipCoin === 2){
-      setTimeout(function(){
+      setTimeout( function(){
         coin.className += (' coin-img-tails');
       },1000)
-      if(tails === false) {
+      if(tails === false){
         p2Turn  = true;
         p1Turn  = false;
-      } else if(tails === true) {
+      } else if(tails === true){
         p2Turn  = false;
         p1Turn  = true;
-      } setTimeout(function(){
+      } setTimeout( function(){
           coin.classList.remove('coin-img-tails');
           fadeOut(coinContainer);
           firstTurnDraw();
           yourTurnPopUp();
         }, 4500);
     } else {
-      setTimeout(function(){
+      setTimeout( function(){
         coin.className += (' coin-img-heads');
       },1000)
-      if(heads === false) {
+      if(heads === false){
         p2Turn  = true;
         p1Turn  = false;
-      } else if(heads === true) {
+      } else if(heads === true){
         p2Turn  = false;
         p1Turn  = true;
       }
-      setTimeout(function(){
+      setTimeout( function(){
         coin.classList.remove('coin-img-heads');
         fadeOut(coinContainer);
         firstTurnDraw();
