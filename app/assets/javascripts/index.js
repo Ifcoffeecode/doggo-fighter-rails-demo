@@ -22,12 +22,23 @@ function getId(id){ return document.getElementById(id); }; //get ID
 function cE(tag){ return document.createElement(tag); }; //create element
 function cTN(text){return document.createTextNode(text); }; //create text node
 
+
+function switchTurnP2(){
+  p1Turn  = false;
+  p2Turn  = true;
+}
+
+function switchTurnP1(){
+  p2Turn  = false;
+  p1Turn  = true;
+}
+
 //=====================================SHUFFLE DECK======================================
 //=======================================================================================
 
 function shuffle(array){
   let currentIndex = array.length, temporaryValue, randomIndex;
-  while (0 !== currentIndex){
+  while ( 0 !== currentIndex ){
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
     temporaryValue = array[currentIndex];
@@ -44,8 +55,8 @@ p2Deck = shuffle(p2Deck);
 //==========================================================================================
 let drawnCardId;
 
-function drawCard (){
-  if(p1Turn === true && gameEnd !== true){
+function drawCard(){
+  if ( p1Turn === true && gameEnd !== true ){
     const drawnCard = p1Deck.pop();
     p1HandArr.push(drawnCard);
     drawnCardId = drawnCard;
@@ -97,8 +108,8 @@ function drawCard (){
     getId('p1-add-new-card').appendChild(newCard);
     setTimeout( function(){
       placeInHand();
-    },1000);
-  } else if (p2Turn === true && gameEnd !== true){
+    }, 1000);
+  } else if ( p2Turn === true && gameEnd !== true ){
     const drawnCard = p2Deck.pop();
     p2HandArr.push(drawnCard);
     drawnCardId = drawnCard;
@@ -150,60 +161,58 @@ function drawCard (){
     getId('p2-add-new-card').appendChild(newCard);
     setTimeout( function(){
       placeInHand();
-    },1000);
+    }, 1000);
   }
 }
 
 //================================PLACE CARDS IN HAND====================================
 //=======================================================================================
 
-function placeInHand (){
+function placeInHand(){
   const p1NewCard = getId('p1-new-card');
   const p1Hand = getId('p1-hand');
   const p2NewCard = getId('p2-new-card');
   const p2Hand = getId('p2-hand');
 
-    if (firstTurn === true && p1Turn === true){
+  if ( firstTurn === true && p1Turn === true ){
+    p1NewCard.setAttribute("draggable","true");
+    p1NewCard.setAttribute("ondragstart","drag(event)");
+    // p1NewCard.className += " first-turn-scale";
+    p1NewCard.classList.remove("flipCard");
+    p1NewCard.removeAttribute("id", 'p1-new-card');
+    p1NewCard.setAttribute("id", `${drawnCardId.cardId}`);
+    p1Hand.appendChild(p1NewCard);
+
+    setTimeout( function(){
+      // p1NewCard.classList.remove("first-turn-scale");
+      p1NewCard.className += " p1-hover";
+    }, 5000);
+  } else if ( firstTurn === true && p2Turn === true ){
+    p2NewCard.classList.remove("flipCard");
+    p2NewCard.removeAttribute("id", 'p2-new-card');
+    p2NewCard.setAttribute("id", `${drawnCardId.cardId}`);
+    p2Hand.appendChild(p2NewCard);
+
+    setTimeout( function(){
+      p2NewCard.className += " p2-hover";
+    }, 1000);
+  } else if ( p1Turn === true && firstTurn === false ){
+    setTimeout( function(){
       p1NewCard.setAttribute("draggable","true");
       p1NewCard.setAttribute("ondragstart","drag(event)");
-      // p1NewCard.className += " first-turn-scale";
+      p1NewCard.className += " p1-hover";
       p1NewCard.classList.remove("flipCard");
       p1NewCard.removeAttribute("id", 'p1-new-card');
       p1NewCard.setAttribute("id", `${drawnCardId.cardId}`);
       p1Hand.appendChild(p1NewCard);
-
-      setTimeout( function(){
-        // p1NewCard.classList.remove("first-turn-scale");
-        p1NewCard.className += " p1-hover";
-      }, 5000);
-
-    } else if (firstTurn === true && p2Turn === true){
-        p2NewCard.classList.remove("flipCard");
-        p2NewCard.removeAttribute("id", 'p2-new-card');
-        p2NewCard.setAttribute("id", `${drawnCardId.cardId}`);
-        p2Hand.appendChild(p2NewCard);
-
-        setTimeout( function(){
-          p2NewCard.className += " p2-hover";
-        }, 1000);
-
-  } else if (p1Turn === true && firstTurn === false){
-    setTimeout( function(){
-       p1NewCard.setAttribute("draggable","true");
-       p1NewCard.setAttribute("ondragstart","drag(event)");
-       p1NewCard.className += " p1-hover";
-       p1NewCard.classList.remove("flipCard");
-       p1NewCard.removeAttribute("id", 'p1-new-card');
-       p1NewCard.setAttribute("id", `${drawnCardId.cardId}`);
-       p1Hand.appendChild(p1NewCard);
     }, 1500);
-  } else if (p2Turn === true && firstTurn === false){
+  } else if ( p2Turn === true && firstTurn === false ){
     setTimeout( function(){
-       p2NewCard.classList.remove("flipCard");
-       p2NewCard.removeAttribute("id", 'p2-new-card');
-       p2NewCard.setAttribute("id", `${drawnCardId.cardId}`);
-       p2Hand.appendChild(p2NewCard);
-       putActiveCardInPlay();
+      p2NewCard.classList.remove("flipCard");
+      p2NewCard.removeAttribute("id", 'p2-new-card');
+      p2NewCard.setAttribute("id", `${drawnCardId.cardId}`);
+      p2Hand.appendChild(p2NewCard);
+      putActiveCardInPlay();
     }, 1500);
   }
 }
@@ -241,27 +250,27 @@ function fadeIn (element, display){
 //==========================================================================================
 
 
-function yourTurnPopUp (){
-  console.log("your turn is being run");
+function yourTurnPopUp(){
   const turn = getId('your-turn');
   const opponentTurn = getId('opponent-turn');
   const p1Buttons = getId('p1-buttons-container');
+
   setTimeout( function(){
-    if(p1Turn === true && gameEnd !== true){
+    if ( p1Turn === true && gameEnd !== true ){
       p2AtkCounter = 0;
       turn.style.display = "inherit";
       setTimeout( function(){
         turn.style.display = 'none';
         fadeIn(p1Buttons);
       }, 2500);
-    } else if(p2Turn === true && gameEnd !== true){
+    } else if ( p2Turn === true && gameEnd !== true ){
       fadeOut(p1Buttons);
       opponentTurn.style.display = "inherit";
       setTimeout( function(){
         opponentTurn.style.display = 'none';
       }, 2500);
     }
-  },500)
+  }, 500)
 }
 
 //=====================================DRAG DROP=========================================
@@ -277,7 +286,7 @@ function drag(event){
 }
 
 function dragleave(event){
-  if(event.target.classList.contains("card-marker")){
+  if (event.target.classList.contains("card-marker")){
     event.target.classList.add("droppable");
   }
 }
@@ -289,12 +298,12 @@ function drop(event){
   console.log(data, "data");
 
   function checkCardId(card){
-      return card.cardId === data;
+    return card.cardId === data;
   }
 
-  if(event.target.classList.contains("active-card-marker")){
+  if ( event.target.classList.contains("active-card-marker") ){
     draggedCard.setAttribute("draggable", "false");
-    if(draggedCard.classList.contains("p1-hcard")){
+    if ( draggedCard.classList.contains("p1-hcard") ){
       let currentActiveCard = p1HandArr.filter(checkCardId);
       let removeCard = p1HandArr.indexOf(currentActiveCard);
       p1HandArr.splice(removeCard);
@@ -302,7 +311,7 @@ function drop(event){
       event.target.appendChild(getId(data));
       draggedCard.classList.remove("p1-hover");
       event.target.classList.remove("droppable");
-    } else if(draggedCard.classList.contains("p1-bcard")){
+    } else if ( draggedCard.classList.contains("p1-bcard") ){
       let currentActiveCard = p1BenchArr.filter(checkCardId);
       let removeCard = p1BenchArr.indexOf(currentActiveCard);
       p1BenchArr.splice(removeCard);
@@ -311,9 +320,9 @@ function drop(event){
       currentActiveCard.classList.remove("p1-hover");
       event.target.classList.remove("droppable");
     }
-  } else if(p1Turn === true && event.target.classList.contains("droppable")){
-    if(event.target.classList.contains("p1-bench-marker")){
-      if(draggedCard.classList.contains("p1-hcard")){
+  } else if ( p1Turn === true && event.target.classList.contains("droppable") ){
+    if ( event.target.classList.contains("p1-bench-marker") ){
+      if ( draggedCard.classList.contains("p1-hcard") ){
         let newBenchCard = p1HandArr.filter(checkCardId);
         let removeCard = p1HandArr.indexOf(newBenchCard);
         let test = p1HandArr.splice(removeCard);
@@ -323,9 +332,9 @@ function drop(event){
         draggedCard.classList.remove("p1-hcard");
         event.target.classList.remove("droppable");
         draggedCard.className += " p1-bcard";
-      } else if(draggedCard.classList.contains("p1-bcard")){
-          event.target.appendChild(getId(data))
-        }
+      } else if ( draggedCard.classList.contains("p1-bcard") ){
+        event.target.appendChild(getId(data))
+      }
     }
   }
 }
@@ -334,40 +343,40 @@ function drop(event){
 //===============================FIRST TURN DRAW CARDS======================================
 //==========================================================================================
 
-function firstTurnDraw (){
+function firstTurnDraw(){
   const p1Buttons = getId('p1-buttons-container');
-  if (p1Turn === true){
+  if ( p1Turn === true ){
     let setIntCounter = 0;
     const firstTurnInt = setInterval(function(){
-      if(setIntCounter === 5){
+      if ( setIntCounter === 5 ){
         clearInterval(firstTurnInt);
       } else {
         drawCard();
         setIntCounter += 1;
       }
     }, 1150);
-  } else if (p2Turn === true){
+  } else if ( p2Turn === true ){
     let setIntCounter = 0;
     const firstTurnInt = setInterval(function(){
-      if(setIntCounter === 5){
+      if ( setIntCounter === 5 ){
         clearInterval(firstTurnInt);
         setTimeout( function(){
           firstTurnPutActiveCardInPlay();
-        },1500)
+        }, 1500)
       } else {
         drawCard();
         setIntCounter += 1;
       }
     }, 1150);
- }
+  }
 }
 
 //===============================PLAYER 1 BUTTONS========================================
 //=======================================================================================
 
 
-function attack (){
-  if(setUp === true){
+function attack(){
+  if ( setUp === true ){
     const speechBubble = getId('speech-bubble');
     const speechBubbleContainer = getId('speech-bubble-container');
     speechBubbleContainer.style.display = "block";
@@ -376,7 +385,7 @@ function attack (){
     setTimeout( function(){
       speechBubbleContainer.style.display = "none";
     }, 3000);
-  } else if(p1Turn === true && p1ActiveCardInPlay !== undefined ){
+  } else if ( p1Turn === true && p1ActiveCardInPlay !== undefined ){
     getId(p1ActiveCardInPlay.cardId).className += " p1-attack";
     getId('p1-explosion').style.display = "inherit";
     setTimeout( function(){
@@ -385,18 +394,18 @@ function attack (){
       target.innerHTML = newHp;
       getId('p1-explosion').style.display = "none";
       getId(p1ActiveCardInPlay.cardId).classList.remove("p1-attack");
-      if(p2ActiveCardInPlay.health <= 0 ){
+      if ( p2ActiveCardInPlay.health <= 0 ){
         target.innerHTML = 0;
         p2DefeatedDoggoArr.push(p2ActiveCardInPlay);
         endGame();
         killCard(p2ActiveCardInPlay);
         p2ActiveCardInPlay = undefined;
       }
-    },1000);
+    }, 1000);
     setTimeout( function(){
       endTurn();
-    },500);
-  } else if(p1Turn === true && p1ActiveCardInPlay === undefined){
+    }, 500);
+  } else if ( p1Turn === true && p1ActiveCardInPlay === undefined ){
     const speechBubble = getId('speech-bubble');
     const speechBubbleContainer = getId('speech-bubble-container');
     speechBubbleContainer.style.display = "block";
@@ -408,7 +417,7 @@ function attack (){
   }
 }
 
-function specialAttack (){
+function specialAttack(){
   const speechBubble = getId('speech-bubble');
   const speechBubbleContainer = getId('speech-bubble-container');
   speechBubbleContainer.style.display = "block";
@@ -419,9 +428,9 @@ function specialAttack (){
   }, 3500);
 }
 
-function endTurn (){
+function endTurn(){
   endGame();
-  if (p1ActiveCardInPlay === undefined && endGame !== true){
+  if ( p1ActiveCardInPlay === undefined && endGame !== true ){
     const speechBubble = getId('speech-bubble');
     const speechBubbleContainer = getId('speech-bubble-container');
     speechBubbleContainer.style.display = "block";
@@ -430,38 +439,35 @@ function endTurn (){
     setTimeout( function(){
       speechBubbleContainer.style.display = "none";
     }, 3000);
-    } else if(p1Turn === true && p1ActiveCardInPlay !== undefined && endGame !== true){
-      if( setUp === true && setUpCounter === 0){
-        setUpCounter += 1;
-        endSetUpState();
-        p2Turn = true;
-        p1Turn = false;
-        yourTurnPopUp();
-        setTimeout( function(){
-          firstTurnDraw();
-        }, 2500)
-      } else if( setUp === true && setUpCounter === 1){
-          setUpCounter += 1;
-          endSetUpState();
-          p2Turn = true;
-          p1Turn = false;
-          yourTurnPopUp();
-          setTimeout( function(){
-            drawCard();
-          },2500)
-          setTimeout( function(){
-            putActiveCardInPlay();
-          },5000);
-        } else {
-        p1Turn = false;
-        p2Turn = true;
-        yourTurnPopUp();
-        setTimeout( function(){
-          drawCard();
-        },2500)
-      }
+  } else if ( p1Turn === true && p1ActiveCardInPlay !== undefined && endGame !== true ){
+    if ( setUp === true && setUpCounter === 0 ){
+      setUpCounter += 1;
+      endSetUpState();
+      switchTurnP2();
+      yourTurnPopUp();
+      setTimeout( function(){
+        firstTurnDraw();
+      }, 2500)
+    } else if ( setUp === true && setUpCounter === 1 ){
+      setUpCounter += 1;
+      endSetUpState();
+      switchTurnP2();
+      yourTurnPopUp();
+      setTimeout( function(){
+        drawCard();
+      }, 2500)
+      setTimeout( function(){
+        putActiveCardInPlay();
+      }, 5000);
+    } else {
+      switchTurnP2();
+      yourTurnPopUp();
+      setTimeout( function(){
+        drawCard();
+      }, 2500)
     }
   }
+}
 
 
 
@@ -471,7 +477,7 @@ function endTurn (){
 //=======================================================================================
 
 function isDoggoCardType(element){
-  if(element.cardType === 'doggo'){
+  if ( element.cardType === 'doggo' ){
     return true;
   } else {
     return false;
@@ -479,7 +485,7 @@ function isDoggoCardType(element){
 }
 
 function isUseCardType(element){
-  if(element.cardType === 'use'){
+  if ( element.cardType === 'use' ){
     return true;
   } else {
     return false;
@@ -489,18 +495,18 @@ function isUseCardType(element){
 //===========================P2 A.I. - PLACECARDS ON FIELD===============================
 //=======================================================================================
 
-function firstTurnPutActiveCardInPlay (){
+function firstTurnPutActiveCardInPlay(){
   setTimeout( function(){
     putActiveCardInPlay();
-  },2000)
+  }, 2000)
 }
 
-function putActiveCardInPlay (){
+function putActiveCardInPlay(){
   const p2ActiveCardNode = getId('p2-active-card');
   const randomNum = Math.floor((Math.random() * p2HandArr.length - 1) + 1);
 
-  if(p2Turn === true && p2ActiveCardInPlay === undefined){
-    if( p2BenchArr.length === 0 && isDoggoCardType(p2HandArr[randomNum]) === true ){
+  if ( p2Turn === true && p2ActiveCardInPlay === undefined ){
+    if ( p2BenchArr.length === 0 && isDoggoCardType(p2HandArr[randomNum]) === true ){
       const removeCardFromHand = p2HandArr.splice(randomNum,1);
       p2ActiveCardInPlay = removeCardFromHand.shift();
       p2ActiveCardNode.appendChild(getId(p2ActiveCardInPlay.cardId));
@@ -518,19 +524,19 @@ function putActiveCardInPlay (){
     } else if ( p2BenchArr.length === 0 && isUseCardType(p2HandArr[randomNum]) === true ){
       putActiveCardInPlay();
     }
-  }  else if(p2BenchArr.length >= 1 && p2ActiveCardInPlay !== undefined){
+  }  else if ( p2BenchArr.length >= 1 && p2ActiveCardInPlay !== undefined ){
     setTimeout( function(){
       p2Attack();
     }, 2000);
-  } else if(p2BenchArr.length === 0){
+  } else if ( p2BenchArr.length === 0 ){
     putCardsOnBench();
   }
 }
 
-function putCardsOnBench (){
+function putCardsOnBench(){
   let newBenchCardToPlace;
   let p2BenchNode;
-  if( p2Turn === true && p2ActiveCardInPlay !== undefined && p2BenchArr.length === 0 ){
+  if ( p2Turn === true && p2ActiveCardInPlay !== undefined && p2BenchArr.length === 0 ){
     const randomNumBench = Math.floor((Math.random() * 3) + 2);
     let i = 0;
     const benchPlacement = setInterval(function(){
@@ -540,7 +546,7 @@ function putCardsOnBench (){
           p2Attack();
         }, 1500);
         clearInterval(benchPlacement);
-      } else if( i >= randomNumBench){
+      } else if ( i >= randomNumBench){
         setTimeout( function(){
           p2Attack();
         }, 1500);
@@ -563,22 +569,22 @@ function putCardsOnBench (){
           p2BenchNode.appendChild(newBenchCardToPlace);
         }
       }
-  },1500);
-} else {
-  console.log('attacking 4')
+    }, 1500);
+  } else {
+    console.log('attacking 4')
     setTimeout( function(){
       p2Attack();
-    },2000)
+    }, 2000)
   }
 }
 
 //===========================P2 A.I. - ATTACK/SPECIAL/ENDTURN============================
 //=======================================================================================
 
-function p2Attack (){
-  if(setUp === true){
+function p2Attack(){
+  if ( setUp === true ){
     p2EndTurn();
-  } else if( p2Turn === true && p2ActiveCardInPlay !== undefined && p1ActiveCardInPlay !== undefined && p2AtkCounter === 0 ){
+  } else if ( p2Turn === true && p2ActiveCardInPlay !== undefined && p1ActiveCardInPlay !== undefined && p2AtkCounter === 0 ){
     p2AtkCounter += 1;
     getId(p2ActiveCardInPlay.cardId).className += " p2-attack";
     getId('p2-explosion').style.display = "inherit";
@@ -589,7 +595,7 @@ function p2Attack (){
       target.innerHTML = newHp;
       getId('p2-explosion').style.display = "none";
       getId(p2ActiveCardInPlay.cardId).classList.remove("p2-attack");
-      if(p1ActiveCardInPlay.health <= 0 ){
+      if ( p1ActiveCardInPlay.health <= 0 ){
         p1DefeatedDoggoArr.push(p1ActiveCardInPlay);
         endTurn();
         target.innerHTML = 0;
@@ -597,7 +603,7 @@ function p2Attack (){
         p1ActiveCardInPlay = undefined;
         getId('p1-active-card').classList.add("droppable")
       }
-    },1000);
+    }, 1000);
     setTimeout( function(){
       p2EndTurn();
     }, 1500);
@@ -605,42 +611,39 @@ function p2Attack (){
 }
 
 
-function p2SpecialAttack (){
+function p2SpecialAttack(){
 }
 
-function p2EndTurn (){
+function p2EndTurn(){
   endGame();
   if ( p2ActiveCardInPlay === undefined && endGame !== true ){
-      putActiveCardInPlay();
-    } else if(p2Turn === true && p2ActiveCardInPlay !== undefined && endGame !== true){
-      if( setUp === true && setUpCounter === 0){
-        setUpCounter += 1;
-        endSetUpState();
-        p1Turn = true;
-        p2Turn = false;
-        yourTurnPopUp();
-        setTimeout( function(){
-          firstTurnDraw();
-        },2500)
-      } else if( setUp === true && setUpCounter === 1){
-          setUpCounter += 1;
-          endSetUpState();
-          p1Turn = true;
-          p2Turn = false;
-          yourTurnPopUp();
-          setTimeout( function(){
-            drawCard();
-          },2500)
-        } else {
-        p2Turn = false;
-        p1Turn = true;
-        yourTurnPopUp();
-        setTimeout( function(){
-          drawCard();
-        },2500)
-      }
+    putActiveCardInPlay();
+  } else if ( p2Turn === true && p2ActiveCardInPlay !== undefined && endGame !== true ){
+    if ( setUp === true && setUpCounter === 0 ){
+      setUpCounter += 1;
+      endSetUpState();
+      switchTurnP1();
+      yourTurnPopUp();
+      setTimeout( function(){
+        firstTurnDraw();
+      }, 2500)
+    } else if ( setUp === true && setUpCounter === 1 ){
+      setUpCounter += 1;
+      endSetUpState();
+      switchTurnP1();
+      yourTurnPopUp();
+      setTimeout( function(){
+        drawCard();
+      }, 2500)
+    } else {
+      switchTurnP1();
+      yourTurnPopUp();
+      setTimeout( function(){
+        drawCard();
+      }, 2500)
     }
   }
+}
 
 //=======================================================================================
 //=================================END OF P2 AI==========================================
@@ -651,35 +654,35 @@ function p2EndTurn (){
 //=======================================================================================
 
 function killCard(card){
-    const deadCard = getId(card.cardId);
-    deadCard.className += " death";
-    setTimeout( function(){
-      deadCard.remove();
-    }, 3500);
-    endGame();
+  const deadCard = getId(card.cardId);
+  deadCard.className += " death";
+  setTimeout( function(){
+    deadCard.remove();
+  }, 3500);
+  endGame();
 }
 
-function endGame (){
-  if(p2DefeatedDoggoArr.length === 1){
+function endGame(){
+  if ( p2DefeatedDoggoArr.length === 5 ){
     gameEnd = true;
     p1Turn = false;
     p2Turn = false;
     setTimeout( function(){
-    getId('you-win').style.display = "inherit";
-  },1000)
-  } else if(p1DefeatedDoggoArr.length === 1){
+      getId('you-win').style.display = "inherit";
+    }, 1000)
+  } else if (p1DefeatedDoggoArr.length === 5 ){
     gameEnd = true;
     p1Turn = false;
     p2Turn = false;
     setTimeout( function(){
-    getId('you-lose').style.display = "inherit";
-  },1000)
+      getId('you-lose').style.display = "inherit";
+    }, 1000)
   }
 }
 //===========================GAME SETUP STATE============================================
 //=======================================================================================
 function endSetUpState(){
-  if(setUpCounter === 2){
+  if ( setUpCounter === 2 ){
     setUp = false;
     firstTurn = false;
   }
@@ -688,6 +691,7 @@ function endSetUpState(){
 
 //===========================GAME START - COIN TOSS FOR WHO GOES FIRST===================
 //=======================================================================================
+
 
 function tailsSelected(){
   tails = true;
@@ -706,38 +710,34 @@ function headsSelected(){
 }
 
 function chooseWhoGoesFirst(){
-  if(gameStart === true){
+  if ( gameStart === true ){
     gameStart = false;
     const coinContainer = getId('coin-container');
     const coin = getId('coin-img');
     fadeIn(coinContainer);
-    var flipCoin = Math.floor((Math.random() * 2) + 1);
-    if(flipCoin === 2){
+    let flipCoin = Math.floor((Math.random() * 2) + 1);
+    if (flipCoin === 2){
       setTimeout( function(){
         coin.className += (' coin-img-tails');
       },1000)
-      if(tails === false){
-        p2Turn  = true;
-        p1Turn  = false;
-      } else if(tails === true){
-        p2Turn  = false;
-        p1Turn  = true;
+      if ( tails === false ){
+        switchTurnP2();
+      } else if ( tails === true ){
+        switchTurnP1();
       } setTimeout( function(){
-          coin.classList.remove('coin-img-tails');
-          fadeOut(coinContainer);
-          firstTurnDraw();
-          yourTurnPopUp();
-        }, 4500);
+        coin.classList.remove('coin-img-tails');
+        fadeOut(coinContainer);
+        firstTurnDraw();
+        yourTurnPopUp();
+      }, 4500);
     } else {
       setTimeout( function(){
         coin.className += (' coin-img-heads');
-      },1000)
-      if(heads === false){
-        p2Turn  = true;
-        p1Turn  = false;
-      } else if(heads === true){
-        p2Turn  = false;
-        p1Turn  = true;
+      }, 1000)
+      if ( heads === false ){
+        switchTurnP2();
+      } else if ( heads === true ){
+        switchTurnP1();
       }
       setTimeout( function(){
         coin.classList.remove('coin-img-heads');
