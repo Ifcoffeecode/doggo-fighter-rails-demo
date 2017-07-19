@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An interactive card game based on the popular doggo fighter memes, in which different dogs in unique costumes battle each other using their special abilities. The user is able to create an account and battle against an AI in the hopes of topping the leaderboard.
 
-Things you may want to cover:
+* Ruby version: ruby-2.4.1
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Note: Responsive layout is not complete. Built with 13inch MacBook, larger screens will cause layout issues.
