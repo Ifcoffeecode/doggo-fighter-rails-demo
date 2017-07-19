@@ -5,13 +5,12 @@
 
 #rules-container {
   position: relative;
-  top: 18%;
-  left:10%;
+  top: 2%;
   margin: auto;
-  padding:50px;
-  width: 60%;
+  padding:3%;
+  width: 85%;
   background-color: transparentize(#3b3d3f, .3);
-  height: 70%;
+  height: 85%;
   border: medium orange solid;
   border-radius: 10px;
   display: flex;
@@ -19,7 +18,7 @@
   justify-content: center;
   align-items: center;
   color:white;
-
+  overflow: auto;
 }
 
 #rules-container > h3 {

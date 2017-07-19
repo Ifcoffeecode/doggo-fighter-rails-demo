@@ -3,21 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #card-list {
-  margin: auto;
-  display: inline-block;
-  position: relative;
-  bottom: 50px;
-  height:75%;
-  width:80%;
-  padding-top:120px;
-  padding-left:200px;
-}
-
-#card-list-container {
   background-color: transparentize(#3b3d3f, .3);
   border: medium orange solid;
   border-radius: 10px;
+  display: inline-block;
+  height:80vh;
+  width:50vw;
+  padding-top:10%;
+  padding-left:3%;
+  padding-right: 8%;
+  overflow: auto;
 }
+
 
 #card-list-title {
   position: absolute;
@@ -29,8 +26,9 @@
 }
 
 #cards-page {
-  padding-top: 100px;
-  height: 1000px;
+  padding: 15vh;
+  padding-left: 25vw;
+  height: 100vh;
   background-image: url("loginpagebackground1.jpeg");
   background-position:center;
   background-repeat: no-repeat;

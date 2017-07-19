@@ -663,14 +663,14 @@ function killCard(card){
 }
 
 function endGame(){
-  if ( p2DefeatedDoggoArr.length === 5 ){
+  if ( p2DefeatedDoggoArr.length === 1 ){
     gameEnd = true;
     p1Turn = false;
     p2Turn = false;
     setTimeout( function(){
       getId('you-win').style.display = "inherit";
     }, 1000)
-  } else if (p1DefeatedDoggoArr.length === 5 ){
+  } else if (p1DefeatedDoggoArr.length === 1 ){
     gameEnd = true;
     p1Turn = false;
     p2Turn = false;
