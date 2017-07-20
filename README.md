@@ -4,4 +4,4 @@ An interactive card game based on the popular doggo fighter memes, in which diff
 
 * Ruby version: ruby-2.4.1
 
-* Note: Responsive layout is not complete. Built with 13inch MacBook, larger screens will cause layout issues.
+* Note: Responsive layout is not complete. Built with 13inch screen, different screen sizes will cause layout issues.
