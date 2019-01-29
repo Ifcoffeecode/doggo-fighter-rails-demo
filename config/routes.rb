@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get '/', to: 'welcome#index', as: 'home'
+  get '/', to: 'main_menu#index', as: 'home'
   get '/main_menu', to: 'main_menu#index', as: 'menu'
   get '/cards', to: 'cards#index', as: 'cards'
   get '/rules', to: 'rules#index', as: 'how_to_play'

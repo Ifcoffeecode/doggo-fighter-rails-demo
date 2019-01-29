@@ -1,22 +1,25 @@
-let gameStart = true;
-let setUp = true;
-let setUpCounter = 0;
-let p1Turn = true;
-let p2Turn = false;
-let firstTurn = true;
-let p1HandArr = [];
-let p2HandArr = [];
-let p1BenchArr = [];
-let p2BenchArr = [];
-let p1ActiveCardInPlay;
-let p2ActiveCardInPlay;
-let p1DefeatedDoggoArr = [];
-let p2DefeatedDoggoArr = [];
-let bubbleText = "";
-let heads = false;
-let tails = false;
-let gameEnd = false;
-let p2AtkCounter = 0;
+//======================GLOBAL VARIABLES========================
+//==============================================================
+
+let gameStart = true,
+setUp = true,
+setUpCounter = 0,
+p1Turn = true,
+p2Turn = false,
+firstTurn = true,
+p1HandArr = [],
+p2HandArr = [],
+p1BenchArr = [],
+p2BenchArr = [],
+p1ActiveCardInPlay,
+p2ActiveCardInPlay,
+p1DefeatedDoggoArr = [],
+p2DefeatedDoggoArr = [],
+bubbleText = "",
+heads = false,
+tails = false,
+gameEnd = false,
+p2AtkCounter = 0;
 
 function getId(id){ return document.getElementById(id); }; //get ID
 function cE(tag){ return document.createElement(tag); }; //create element
@@ -33,8 +36,9 @@ function switchTurnP1(){
   p1Turn  = true;
 }
 
-//=====================================SHUFFLE DECK======================================
-//=======================================================================================
+//============================SHUFFLE DECK=====================
+//==============================================================
+
 
 function shuffle(array){
   let currentIndex = array.length, temporaryValue, randomIndex;
@@ -51,8 +55,8 @@ function shuffle(array){
 p1Deck = shuffle(p1Deck);
 p2Deck = shuffle(p2Deck);
 
-//=============================DRAW CARDS FOR PLAYERS=======================================
-//==========================================================================================
+//=============================DRAW CARDS FOR PLAYERS===========
+//==============================================================
 let drawnCardId;
 
 function drawCard(){
@@ -663,14 +667,14 @@ function killCard(card){
 }
 
 function endGame(){
-  if ( p2DefeatedDoggoArr.length === 1 ){
+  if ( p2DefeatedDoggoArr.length === 3 ){
     gameEnd = true;
     p1Turn = false;
     p2Turn = false;
     setTimeout( function(){
       getId('you-win').style.display = "inherit";
     }, 1000)
-  } else if (p1DefeatedDoggoArr.length === 1 ){
+  } else if (p1DefeatedDoggoArr.length === 3 ){
     gameEnd = true;
     p1Turn = false;
     p2Turn = false;

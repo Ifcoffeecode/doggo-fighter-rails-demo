@@ -22,7 +22,7 @@ let p1Deck = [
 {
   name: "Armoured Arnold",
   cardId: "armoured-arnold",
-  attack: 4,
+  attack: 5,
   health: 8,
   special: "Special: To arms",
   cardType: "doggo",
@@ -40,7 +40,7 @@ let p1Deck = [
 {
   name: "Bandit Bonnie",
   cardId: "bandit-bonnie",
-  attack: 1,
+  attack: 2,
   health: 3,
   special: "Special: Bone steal",
   cardType: "doggo",
@@ -49,8 +49,8 @@ let p1Deck = [
 {
   name: "Biker Bob",
   cardId: "biker-bob",
-  attack:  3,
-  health: 3,
+  attack:  4,
+  health: 4,
   special: "Special: Burn out",
   cardType: "doggo",
   image:"biker-bob.jpg"
@@ -58,7 +58,7 @@ let p1Deck = [
 {
   name: "Captain Connor",
   cardId: "captain-connor",
-  attack: 2,
+  attack: 3,
   health: 4,
   special: "Special: Smooth sailing",
   cardType: "doggo",
@@ -67,8 +67,8 @@ let p1Deck = [
 {
   name: "Cerberus Clive",
   cardId: "cerberus-clive",
-  attack: 3,
-  health: 3,
+  attack: 4,
+  health: 4,
   special: "Special: Triple bite",
   cardType: "doggo",
   image:"hydra-harry.jpeg"
@@ -76,7 +76,7 @@ let p1Deck = [
 {
   name: "Cody the Canuck",
   cardId: "cody-the-canuck",
-  attack: 2,
+  attack: 5,
   health: 5,
   special: "Special: Slap shot",
   cardType: "doggo",
@@ -86,7 +86,7 @@ let p1Deck = [
   name: "Oompa Loompa",
   cardId: "crazed-oompa-loompa",
   attack: 3,
-  health: 4,
+  health: 6,
   special: "Special: Golden ticket",
   cardType: "doggo",
   image:"crazed-oompa-loompa.jpg"
@@ -95,7 +95,7 @@ let p1Deck = [
   name: "Creepy Cory",
   cardId: "creepy-cory",
   attack: 4,
-  health: 2,
+  health: 6,
   special: "Special: Web spin",
   cardType: "doggo",
   image:"creepy-cory.png"
@@ -112,8 +112,8 @@ let p1Deck = [
 {
   name: "Death Bringer",
   cardId:  "death-bringer",
-  attack: 3,
-  health: 3,
+  attack: 6,
+  health: 6,
   special: "Special: Raise hell",
   cardType: "doggo",
   image:"death-bringer.jpg"
@@ -121,8 +121,8 @@ let p1Deck = [
 {
   name: "Derpy Dan",
   cardId:  "derpy-dan",
-  attack: 1,
-  health: 2,
+  attack: 3,
+  health: 3,
   special: "Special: Pot o' gold",
   cardType: "doggo",
   image:"derpy-dan.jpg"
@@ -131,7 +131,7 @@ let p1Deck = [
   name: "Doctor Daryl",
   cardId: "doctor-daryl",
   attack: 3,
-  health: 4,
+  health: 5,
   special: "Special: Triage",
   cardType: "doggo",
   image:"doctor-darryl.jpeg"
@@ -139,8 +139,8 @@ let p1Deck = [
 {
   name: "Gameover Garry",
   cardId: "gameover-garry",
-  attack: 2,
-  health: 2,
+  attack: 1,
+  health: 1,
   special: "Special: Pass out",
   cardType: "doggo",
   image:"gameover-garry.jpg"
@@ -148,8 +148,8 @@ let p1Deck = [
 {
   name: "Ghostly Gail",
   cardId: "ghostly-gail",
-  attack: 2,
-  health: 3,
+  attack: 3,
+  health: 5,
   special: "Special: Spook",
   cardType: "doggo",
   image:"ghostly-gail.jpg"
@@ -157,7 +157,7 @@ let p1Deck = [
 {
   name: "Gnome Gabby",
   cardId: "gnome-gabby",
-  attack: 1,
+  attack: 5,
   health: 3,
   special: "Special: Garden",
   cardType: "doggo",
@@ -166,8 +166,8 @@ let p1Deck = [
 {
   name: "Heli Hansen",
   cardId: "heli-hansen",
-  attack: 2,
-  health: 3,
+  attack: 4,
+  health: 5,
   special: "Special: To Da Choppa",
   cardType: "doggo",
   image:"heli-hansen.jpg"
@@ -175,8 +175,8 @@ let p1Deck = [
 {
   name: "Hipster Howard",
   cardId: "hipster-howard",
-  attack: 2,
-  health: 2,
+  attack: 3,
+  health: 3,
   special: "Special: Kale anyone?",
   cardType: "doggo",
   image:"hipster-howard.jpg"
@@ -184,7 +184,7 @@ let p1Deck = [
 {
   name: "Inmate Ingrid",
   cardId: "inmate-ingrid",
-  attack: 3,
+  attack: 5,
   health: 5,
   special: "Special: Shank",
   cardType: "doggo",
@@ -193,7 +193,7 @@ let p1Deck = [
 {
   name: "Kinky Karl",
   cardId: "kinky-karl",
-  attack: 2,
+  attack: 3,
   health: 4,
   special: "Special: Whip it good",
   cardType: "doggo",
@@ -202,8 +202,8 @@ let p1Deck = [
 {
   name: "Lager Lillian",
   cardId: "lager-lillian",
-  attack: 2,
-  health: 4,
+  attack: 3,
+  health: 5,
   special: "Special: Bottoms up",
   cardType: "doggo",
   image:"lager-lillian.jpg"
@@ -211,8 +211,8 @@ let p1Deck = [
 {
   name: "Life Bringer",
   cardId: "life-bringer",
-  attack: 3,
-  health: 3,
+  attack: 5,
+  health: 5,
   special: "Special: Heavenly heals",
   cardType: "doggo",
   image:"life-bringer.jpeg"
@@ -220,8 +220,8 @@ let p1Deck = [
 {
   name: "Martini Miley",
   cardId: "martini-miley",
-  attack: 2,
-  health: 2,
+  attack: 4,
+  health: 3,
   special: "Special: Shake(not stir)",
   cardType: "doggo",
   image:"martini-miley.jpeg"
@@ -229,7 +229,7 @@ let p1Deck = [
 {
   name: "Medieval Marvin",
   cardId: "medieval-marvin",
-  attack: 2,
+  attack: 5,
   health: 3,
   special: "Special: For the king",
   cardType: "doggo",
@@ -238,8 +238,8 @@ let p1Deck = [
 {
   name: "Nurse Nancy",
   cardId: "nurse-nancy",
-  attack: 2,
-  health: 4,
+  attack: 3,
+  health: 6,
   special: "Special: Checkup",
   cardType: "doggo",
   image:"nurse-nancy.jpg"
@@ -247,7 +247,7 @@ let p1Deck = [
 {
   name: "Panda Pam",
   cardId: "panda-pam",
-  attack: 2,
+  attack: 5,
   health: 3,
   special: "Special: Bamboozle",
   cardType: "doggo",
@@ -256,8 +256,8 @@ let p1Deck = [
 {
   name: "Pharaoh Phil",
   cardId: "pharaoh-phil",
-  attack: 1,
-  health: 4,
+  attack: 2,
+  health: 6,
   special: "Special: Enslave",
   cardType: "doggo",
   image:"pharaoh-phil.jpg"
@@ -265,7 +265,7 @@ let p1Deck = [
 {
   name: "Pilot Pete",
   cardId: "pilot-pete",
-  attack: 2,
+  attack: 4,
   health: 4,
   special: "Special: Supply drop",
   cardType: "doggo",
@@ -274,8 +274,8 @@ let p1Deck = [
 {
   name: "Pincer Pat",
   cardId: "pincer-pat",
-  attack: 3,
-  health: 6,
+  attack: 6,
+  health: 3,
   special: "Special: Snip snip",
   cardType: "doggo",
   image:"pincer-pat.jpeg"
@@ -283,8 +283,8 @@ let p1Deck = [
 {
   name: "Pirate Pug",
   cardId: "pirate-pug",
-  attack: 2,
-  health: 4,
+  attack: 3,
+  health: 5,
   special: "Special: Hook",
   cardType: "doggo",
   image:"pirate-pug.jpg"
@@ -293,7 +293,7 @@ let p1Deck = [
   name: `RumpleStiltSkin`,
   cardId: "rumpel-stilt-skin",
   attack: 3,
-  health: 3,
+  health: 4,
   special: "Special: Spin",
   cardType: "doggo",
   image:"rumpel-stilt-skin.jpeg"
@@ -301,8 +301,8 @@ let p1Deck = [
 {
   name: "Scuba Steve",
   cardId: "scuba-steve",
-  attack: 2,
-  health: 4,
+  attack: 3,
+  health: 3,
   special: "Special: Flipper slap",
   cardType: "doggo",
   image:"scuba-steve.jpeg"
@@ -310,8 +310,8 @@ let p1Deck = [
 {
   name: "Smelly Sam",
   cardId: "smelly-sam",
-  attack: 2,
-  health: 3,
+  attack: 4,
+  health: 6,
   special: "Special: Spray",
   cardType: "doggo",
   image:"smelly-sam.jpg"
@@ -320,7 +320,7 @@ let p1Deck = [
   name: "Tiny Tank",
   cardId: "tiny-tank",
   attack: 1,
-  health: 8,
+  health: 10,
   special: "Special: Turtle",
   cardType: "doggo",
   image:"tiny-tank.jpeg"
@@ -338,7 +338,7 @@ let p1Deck = [
   name: "Triceratop Tim",
   cardId: "triceratop-tim",
   attack: 3,
-  health: 5,
+  health: 3,
   special: "Special: Charge",
   cardType: "doggo",
   image:"triceratop-tim.jpg"
@@ -346,7 +346,7 @@ let p1Deck = [
 {
   name: "Toupee Trump",
   cardId: "trump",
-  attack: 3,
+  attack: 2,
   health: 6,
   special: "Special: Tweet",
   cardType: "doggo",
@@ -355,7 +355,7 @@ let p1Deck = [
 {
   name: "Wacky Waldo",
   cardId: "waldo",
-  attack: 2,
+  attack: 4,
   health: 4,
   special: "Special: Here I am",
   cardType: "doggo",
@@ -365,7 +365,7 @@ let p1Deck = [
   name: "Walking Dog",
   cardId: "walking-dog",
   attack: 3,
-  health: 2,
+  health: 4,
   special: "Special: Braaains",
   cardType: "doggo",
   image:"walking-dog.jpeg"
@@ -373,8 +373,8 @@ let p1Deck = [
 {
   name: "Walrus Willy",
   cardId: "walrus-willy",
-  attack: 2,
-  health: 2,
+  attack: 5,
+  health: 3,
   special: "Special: Tusk Strike",
   cardType: "doggo",
   image:"walrus-willy.jpeg"
@@ -382,8 +382,8 @@ let p1Deck = [
 {
   name: "Wicked Wendy",
   cardId: "wicked-wendy",
-  attack: 2,
-  health: 4,
+  attack: 6,
+  health: 2,
   special: "Special: Bewitch",
   cardType: "doggo",
   image:"wicked-wendy.jpg"
@@ -418,7 +418,7 @@ let p1Deck = [
  {
    name: "Armoured Arnold",
    cardId: "armoured-arnold2",
-   attack: 4,
+   attack: 5,
    health: 8,
    special: "Special: To arms",
    cardType: "doggo",
@@ -436,7 +436,7 @@ let p1Deck = [
  {
    name: "Bandit Bonnie",
    cardId: "bandit-bonnie2",
-   attack: 1,
+   attack: 2,
    health: 3,
    special: "Special: Bone steal",
    cardType: "doggo",
@@ -445,8 +445,8 @@ let p1Deck = [
  {
    name: "Biker Bob",
    cardId: "biker-bob2",
-   attack:  3,
-   health: 3,
+   attack:  4,
+   health: 4,
    special: "Special: Burn out",
    cardType: "doggo",
    image:"biker-bob.jpg"
@@ -454,7 +454,7 @@ let p1Deck = [
  {
    name: "Captain Connor",
    cardId: "captain-connor2",
-   attack: 2,
+   attack: 3,
    health: 4,
    special: "Special: Smooth sailing",
    cardType: "doggo",
@@ -463,8 +463,8 @@ let p1Deck = [
  {
    name: "Cerberus Clive",
    cardId: "cerberus-clive2",
-   attack: 3,
-   health: 3,
+   attack: 4,
+   health: 4,
    special: "Special: Triple bite",
    cardType: "doggo",
    image:"hydra-harry.jpeg"
@@ -472,7 +472,7 @@ let p1Deck = [
  {
    name: "Cody the Canuck",
    cardId: "cody-the-canuck2",
-   attack: 2,
+   attack: 5,
    health: 5,
    special: "Special: Slap shot",
    cardType: "doggo",
@@ -482,7 +482,7 @@ let p1Deck = [
    name: "Oompa Loompa",
    cardId: "crazed-oompa-loompa2",
    attack: 3,
-   health: 4,
+   health: 6,
    special: "Special: Golden ticket",
    cardType: "doggo",
    image:"crazed-oompa-loompa.jpg"
@@ -491,7 +491,7 @@ let p1Deck = [
    name: "Creepy Cory",
    cardId: "creepy-cory2",
    attack: 4,
-   health: 2,
+   health: 6,
    special: "Special: Web spin",
    cardType: "doggo",
    image:"creepy-cory.png"
@@ -508,8 +508,8 @@ let p1Deck = [
  {
    name: "Death Bringer",
    cardId:  "death-bringer2",
-   attack: 3,
-   health: 3,
+   attack: 6,
+   health: 6,
    special: "Special: Raise hell",
    cardType: "doggo",
    image:"death-bringer.jpg"
@@ -517,8 +517,8 @@ let p1Deck = [
  {
    name: "Derpy Dan",
    cardId:  "derpy-dan2",
-   attack: 1,
-   health: 2,
+   attack: 3,
+   health: 3,
    special: "Special: Pot o' gold",
    cardType: "doggo",
    image:"derpy-dan.jpg"
@@ -527,7 +527,7 @@ let p1Deck = [
    name: "Doctor Daryl",
    cardId: "doctor-daryl2",
    attack: 3,
-   health: 4,
+   health: 5,
    special: "Special: Triage",
    cardType: "doggo",
    image:"doctor-darryl.jpeg"
@@ -535,8 +535,8 @@ let p1Deck = [
  {
    name: "Gameover Garry",
    cardId: "gameover-garry2",
-   attack: 2,
-   health: 2,
+   attack: 1,
+   health: 1,
    special: "Special: Pass out",
    cardType: "doggo",
    image:"gameover-garry.jpg"
@@ -544,8 +544,8 @@ let p1Deck = [
  {
    name: "Ghostly Gail",
    cardId: "ghostly-gail2",
-   attack: 2,
-   health: 3,
+   attack: 3,
+   health: 5,
    special: "Special: Spook",
    cardType: "doggo",
    image:"ghostly-gail.jpg"
@@ -553,7 +553,7 @@ let p1Deck = [
  {
    name: "Gnome Gabby",
    cardId: "gnome-gabby2",
-   attack: 1,
+   attack: 5,
    health: 3,
    special: "Special: Garden",
    cardType: "doggo",
@@ -562,8 +562,8 @@ let p1Deck = [
  {
    name: "Heli Hansen",
    cardId: "heli-hansen2",
-   attack: 2,
-   health: 3,
+   attack: 4,
+   health: 5,
    special: "Special: To Da Choppa",
    cardType: "doggo",
    image:"heli-hansen.jpg"
@@ -571,8 +571,8 @@ let p1Deck = [
  {
    name: "Hipster Howard",
    cardId: "hipster-howard2",
-   attack: 2,
-   health: 2,
+   attack: 3,
+   health: 3,
    special: "Special: Kale anyone?",
    cardType: "doggo",
    image:"hipster-howard.jpg"
@@ -580,7 +580,7 @@ let p1Deck = [
  {
    name: "Inmate Ingrid",
    cardId: "inmate-ingrid2",
-   attack: 3,
+   attack: 5,
    health: 5,
    special: "Special: Shank",
    cardType: "doggo",
@@ -589,7 +589,7 @@ let p1Deck = [
  {
    name: "Kinky Karl",
    cardId: "kinky-karl2",
-   attack: 2,
+   attack: 3,
    health: 4,
    special: "Special: Whip it good",
    cardType: "doggo",
@@ -598,8 +598,8 @@ let p1Deck = [
  {
    name: "Lager Lillian",
    cardId: "lager-lillian2",
-   attack: 2,
-   health: 4,
+   attack: 3,
+   health: 5,
    special: "Special: Bottoms up",
    cardType: "doggo",
    image:"lager-lillian.jpg"
@@ -607,8 +607,8 @@ let p1Deck = [
  {
    name: "Life Bringer",
    cardId: "life-bringer2",
-   attack: 3,
-   health: 3,
+   attack: 5,
+   health: 5,
    special: "Special: Heavenly heals",
    cardType: "doggo",
    image:"life-bringer.jpeg"
@@ -616,8 +616,8 @@ let p1Deck = [
  {
    name: "Martini Miley",
    cardId: "martini-miley2",
-   attack: 2,
-   health: 2,
+   attack: 4,
+   health: 3,
    special: "Special: Shake(not stir)",
    cardType: "doggo",
    image:"martini-miley.jpeg"
@@ -625,7 +625,7 @@ let p1Deck = [
  {
    name: "Medieval Marvin",
    cardId: "medieval-marvin2",
-   attack: 2,
+   attack: 5,
    health: 3,
    special: "Special: For the king",
    cardType: "doggo",
@@ -634,8 +634,8 @@ let p1Deck = [
  {
    name: "Nurse Nancy",
    cardId: "nurse-nancy2",
-   attack: 2,
-   health: 4,
+   attack: 3,
+   health: 6,
    special: "Special: Checkup",
    cardType: "doggo",
    image:"nurse-nancy.jpg"
@@ -643,7 +643,7 @@ let p1Deck = [
  {
    name: "Panda Pam",
    cardId: "panda-pam2",
-   attack: 2,
+   attack: 5,
    health: 3,
    special: "Special: Bamboozle",
    cardType: "doggo",
@@ -652,8 +652,8 @@ let p1Deck = [
  {
    name: "Pharaoh Phil",
    cardId: "pharaoh-phil2",
-   attack: 1,
-   health: 4,
+   attack: 2,
+   health: 6,
    special: "Special: Enslave",
    cardType: "doggo",
    image:"pharaoh-phil.jpg"
@@ -661,7 +661,7 @@ let p1Deck = [
  {
    name: "Pilot Pete",
    cardId: "pilot-pete2",
-   attack: 2,
+   attack: 4,
    health: 4,
    special: "Special: Supply drop",
    cardType: "doggo",
@@ -670,8 +670,8 @@ let p1Deck = [
  {
    name: "Pincer Pat",
    cardId: "pincer-pat2",
-   attack: 3,
-   health: 6,
+   attack: 6,
+   health: 3,
    special: "Special: Snip snip",
    cardType: "doggo",
    image:"pincer-pat.jpeg"
@@ -679,8 +679,8 @@ let p1Deck = [
  {
    name: "Pirate Pug",
    cardId: "pirate-pug2",
-   attack: 2,
-   health: 4,
+   attack: 3,
+   health: 5,
    special: "Special: Hook",
    cardType: "doggo",
    image:"pirate-pug.jpg"
@@ -689,7 +689,7 @@ let p1Deck = [
    name: `RumpleStiltSkin`,
    cardId: "rumpel-stilt-skin2",
    attack: 3,
-   health: 3,
+   health: 4,
    special: "Special: Spin",
    cardType: "doggo",
    image:"rumpel-stilt-skin.jpeg"
@@ -697,8 +697,8 @@ let p1Deck = [
  {
    name: "Scuba Steve",
    cardId: "scuba-steve2",
-   attack: 2,
-   health: 4,
+   attack: 3,
+   health: 3,
    special: "Special: Flipper slap",
    cardType: "doggo",
    image:"scuba-steve.jpeg"
@@ -706,8 +706,8 @@ let p1Deck = [
  {
    name: "Smelly Sam",
    cardId: "smelly-sam2",
-   attack: 2,
-   health: 3,
+   attack: 4,
+   health: 6,
    special: "Special: Spray",
    cardType: "doggo",
    image:"smelly-sam.jpg"
@@ -716,7 +716,7 @@ let p1Deck = [
    name: "Tiny Tank",
    cardId: "tiny-tank2",
    attack: 1,
-   health: 8,
+   health: 10,
    special: "Special: Turtle",
    cardType: "doggo",
    image:"tiny-tank.jpeg"
@@ -742,7 +742,7 @@ let p1Deck = [
  {
    name: "Toupee Trump",
    cardId: "trump2",
-   attack: 3,
+   attack: 2,
    health: 6,
    special: "Special: Tweet",
    cardType: "doggo",
@@ -751,7 +751,7 @@ let p1Deck = [
  {
    name: "Wacky Waldo",
    cardId: "waldo2",
-   attack: 2,
+   attack: 4,
    health: 4,
    special: "Special: Here I am",
    cardType: "doggo",
@@ -761,7 +761,7 @@ let p1Deck = [
    name: "Walking Dog",
    cardId: "walking-dog2",
    attack: 3,
-   health: 2,
+   health: 4,
    special: "Special: Braaains",
    cardType: "doggo",
    image:"walking-dog.jpeg"
@@ -769,8 +769,8 @@ let p1Deck = [
  {
    name: "Walrus Willy",
    cardId: "walrus-willy2",
-   attack: 2,
-   health: 2,
+   attack: 5,
+   health: 3,
    special: "Special: Tusk Strike",
    cardType: "doggo",
    image:"walrus-willy.jpeg"
@@ -778,8 +778,8 @@ let p1Deck = [
  {
    name: "Wicked Wendy",
    cardId: "wicked-wendy2",
-   attack: 2,
-   health: 4,
+   attack: 6,
+   health: 2,
    special: "Special: Bewitch",
    cardType: "doggo",
    image:"wicked-wendy.jpg"
